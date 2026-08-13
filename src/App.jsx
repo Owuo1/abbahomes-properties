@@ -6,7 +6,7 @@ function App() {
     <div className="app">
       {/* Navigation */}
       <nav style={{
-        background: '#2d2d2d',
+        background: '#FFFDD0',
         padding: '15px 30px',
         display: 'flex',
         justifyContent: 'space-between',
