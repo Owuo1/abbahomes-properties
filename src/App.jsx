@@ -21,16 +21,16 @@ function App() {
             alt="Abba Homes Properties" 
             style={{ height: '40px', width: 'auto' }}
           />
-          <span style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>
+          <span style={{ color: 'brown', fontSize: '1.5rem', fontWeight: 'bold' }}>
             Abba<span style={{ color: '#e67e22' }}>Homes</span>
           </span>
         </div>
         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-          <a href="#about" style={{ color: 'rgba(230, 126, 34, 0.5)', textDecoration: 'none' }}>About Us</a>
-          <a href="#services" style={{ color: 'rgba(230, 126, 34, 0.5)', textDecoration: 'none' }}>Services</a>
-          <a href="#properties" style={{ color: 'rgba(230, 126, 34, 0.5)', textDecoration: 'none' }}>Property Search</a>
-          <a href="#map" style={{ color: 'rgba(230, 126, 34, 0.5)', textDecoration: 'none' }}>Map Search</a>
-          <a href="#contact" style={{ color: 'rgba(230, 126, 34, 0.5)', textDecoration: 'none' }}>Contacts</a>
+          <a href="#about" style={{ color: 'rgba(230, 126, 34, 1)', textDecoration: 'none' }}>About Us</a>
+          <a href="#services" style={{ color: 'rgba(230, 126, 34, 1)', textDecoration: 'none' }}>Services</a>
+          <a href="#properties" style={{ color: 'rgba(230, 126, 34, 1)', textDecoration: 'none' }}>Property Search</a>
+          <a href="#map" style={{ color: 'rgba(230, 126, 34, 1)', textDecoration: 'none' }}>Map Search</a>
+          <a href="#contact" style={{ color: 'rgba(230, 126, 34, 1)', textDecoration: 'none' }}>Contacts</a>
           <button style={{
             background: '#e67e22',
             color: 'white',
