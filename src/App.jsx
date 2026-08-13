@@ -22,8 +22,7 @@ function App() {
             style={{ height: '40px', width: 'auto' }}
           />
           <span style={{ color: 'brown', fontSize: '1.5rem', fontWeight: 'bold' }}>
-            Abba<span style={{ color: '#e67e22' }}>Homes</span>
-          </span>
+            Abba Homes & Properties </span>
         </div>
         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
           <a href="#about" style={{ color: 'rgba(230, 126, 34, 1)', textDecoration: 'none' }}>About Us</a>
