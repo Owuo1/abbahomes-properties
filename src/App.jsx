@@ -16,7 +16,11 @@ function App() {
         zIndex: 1000
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '1.8rem' }}>🏠</span>
+          <img 
+            src="/https://postimg.cc/87d3j8yv" 
+            alt="Abba Homes Properties" 
+            style={{ height: '40px', width: 'auto' }}
+          />
           <span style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>
             Abba<span style={{ color: '#e67e22' }}>Homes</span>
           </span>
