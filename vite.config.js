@@ -10,7 +10,25 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    minify: false,  // Disable minification (terser not needed)
+    minify: 'terser',  // Use terser (now installed)
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          icons: ['react-icons/fa', 'react-icons/ai', 'react-icons/md']
+        }
+      }
+    }
   },
+  preview: {
+    port: 3000,
+    open: true
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-icons/fa', 'react-icons/ai', 'react-icons/md', 'uuid']
+  },
+  css: {
+    devSourcemap: true,
+  }
 })
