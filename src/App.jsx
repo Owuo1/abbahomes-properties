@@ -17,7 +17,7 @@ function App() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <img 
-            src="https://i.postimg.cc/w3YMLLFY/abba-logo-removebg-preview.png" 
+            src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
             alt="Abba Homes Properties" 
             style={{ height: '40px', width: 'auto' }}
           />
