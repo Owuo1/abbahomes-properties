@@ -31,7 +31,7 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci  # Uses package-lock.json for faster, reliable installs
+        run: npm install  # Uses package-lock.json for faster, reliable installs
       
       - name: Build
         run: npm run build
