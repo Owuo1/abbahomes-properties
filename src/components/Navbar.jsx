@@ -28,8 +28,8 @@ const Navbar = () => {
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)',
-        flexWrap: 'wrap'
+        boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)'
+        // flexWrap: 'wrap'  ← REMOVED - logo and hamburger now stay parallel
       }}>
         {/* Logo Section - LEFT SIDE */}
         <div
@@ -38,7 +38,7 @@ const Navbar = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
-            flex: '1 1 auto',
+            flex: '0 0 auto',
             minWidth: 0,
             marginRight: 'auto',
             justifyContent: 'flex-start'
