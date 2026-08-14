@@ -29,7 +29,7 @@ const Navbar = () => {
         top: 0,
         zIndex: 1000,
         boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)'
-        // flexWrap: 'wrap'  ← REMOVED - logo and hamburger now stay parallel
+        // flexWrap: 'wrap' - REMOVED
       }}>
         {/* Logo Section - LEFT SIDE */}
         <div
@@ -38,10 +38,8 @@ const Navbar = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
-            flex: '0 0 auto',
-            minWidth: 0,
-            marginRight: 'auto',
-            justifyContent: 'flex-start'
+            flex: '1 1 auto',  // ← FIX 1
+            minWidth: 0
           }}
         >
           <img
@@ -76,10 +74,7 @@ const Navbar = () => {
           style={{
             display: 'block',
             cursor: 'pointer',
-            flexGrow: 0,
-            flexShrink: 0,
-            flexBasis: 'auto',
-            marginLeft: 'auto'
+            flex: '0 0 auto'  // ← FIX 2
           }}
         >
           {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
@@ -134,11 +129,10 @@ const Navbar = () => {
       </nav>
 
       <style>{`
-        /* Mobile + tablet: force the logo left in case any global CSS interferes */
+        /* Mobile + tablet: logo and hamburger stay parallel */
         @media (max-width: 768px) {
           .logo-section {
-            margin-right: auto !important;
-            justify-content: flex-start !important;
+            flex: 1 1 auto !important;
           }
           .logo-text {
             text-align: left !important;
@@ -148,9 +142,6 @@ const Navbar = () => {
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
-          }
-          nav {
-            flex-wrap: nowrap !important;
           }
           .nav-links {
             display: flex !important;
