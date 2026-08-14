@@ -14,13 +14,8 @@ const Navbar = () => {
     { name: 'Contact', path: '/contact' }
   ]
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
-
-  const closeMenu = () => {
-    setIsOpen(false)
-  }
+  const toggleMenu = () => setIsOpen(!isOpen)
+  const closeMenu = () => setIsOpen(false)
 
   return (
     <>
@@ -37,48 +32,56 @@ const Navbar = () => {
         flexWrap: 'wrap'
       }}>
         {/* Logo Section - LEFT SIDE */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
           gap: '12px',
-          flex: '1 1 0',      // ← basis 0: logo takes leftover space, never forces a line break
-          minWidth: 0,        // ← allows the logo to shrink below its content width
-          overflow: 'hidden'  // ← safety net so it never pushes the hamburger out
+          flexGrow: 1,
+          flexShrink: 1,
+          flexBasis: 'auto',
+          minWidth: 0          // allows shrinking so it never forces a line wrap
         }}>
-          <img 
-            src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
-            alt="Abba Homes Properties" 
+          <img
+            src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
+            alt="Abba Homes Properties"
             style={{ height: '45px', width: 'auto', flexShrink: 0 }}
           />
-          <Link to="/" className="logo-text" style={{ 
-            color: '#4A3520', 
-            fontSize: '1.5rem', 
-            fontWeight: 'bold',
-            textDecoration: 'none',
-            whiteSpace: 'nowrap',      // ← keeps brand text on one line
-            overflow: 'hidden',        // ← truncates instead of overflowing
-            textOverflow: 'ellipsis',  // ← shows "…" if space runs out
-            minWidth: 0                // ← lets the text shrink as a flex item
-          }} onClick={closeMenu}>
+          <Link
+            to="/"
+            onClick={closeMenu}
+            style={{
+              color: '#4A3520',
+              fontSize: 'clamp(1rem, 2.5vw + 0.4rem, 1.5rem)', // fluid: scales with screen
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              minWidth: 0,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}
+          >
             Abba Homes Properties
           </Link>
         </div>
 
         {/* Hamburger Icon - RIGHT SIDE */}
-        <div 
-          style={{ 
+        <div
+          className="hamburger"
+          onClick={toggleMenu}
+          style={{
             display: 'block',
             cursor: 'pointer',
-            flex: '0 0 auto'  // ← stays fixed-width, pinned to the right edge by space-between
+            flexGrow: 0,
+            flexShrink: 0,
+            flexBasis: 'auto',
+            marginLeft: 'auto'   // pins it to the right edge, no matter what
           }}
-          className="hamburger" 
-          onClick={toggleMenu}
         >
           {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
         </div>
 
         {/* Navigation Links - HIDDEN UNTIL CLICKED */}
-        <div style={{ 
+        <div style={{
           display: isOpen ? 'flex' : 'none',
           flexDirection: 'column',
           width: '100%',
@@ -89,12 +92,12 @@ const Navbar = () => {
           flex: '0 0 100%'
         }} className="nav-links">
           {navLinks.map((link) => (
-            <Link 
+            <Link
               key={link.name}
               to={link.path}
-              style={{ 
-                color: '#4A3520', 
-                textDecoration: 'none', 
+              style={{
+                color: '#4A3520',
+                textDecoration: 'none',
                 fontWeight: '500',
                 padding: '10px 0',
                 borderBottom: '1px solid rgba(74, 53, 32, 0.05)',
@@ -126,14 +129,6 @@ const Navbar = () => {
       </nav>
 
       <style>{`
-        /* Mobile + tablet: slightly smaller brand text so the full name fits
-           next to the hamburger without truncating */
-        @media (max-width: 768px) {
-          .logo-text {
-            font-size: 1.15rem !important;
-          }
-        }
-
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
