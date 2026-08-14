@@ -5,6 +5,23 @@
     <link rel="icon" type="image/png" href="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Abba Homes Properties</title>
+    
+    <!-- SPA Route Restoration Script -->
+    <script>
+      (function() {
+        try {
+          const redirect = sessionStorage.getItem('spa-redirect');
+          if (redirect) {
+            sessionStorage.removeItem('spa-redirect');
+            if (redirect.startsWith('/') && !redirect.includes('//') && !redirect.includes('://')) {
+              window.history.replaceState(null, '', redirect);
+            }
+          }
+        } catch (e) {
+          // Ignore storage errors
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
