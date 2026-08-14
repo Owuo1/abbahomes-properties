@@ -121,7 +121,7 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '10px', opacity: 0.8 }}> +254 100 658430</li>
               <li style={{ marginBottom: '10px', opacity: 0.8 }}> info@abbahomes-properties.com</li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}> Rod Kopany, Homa Bay County, Kenya</li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}> Homa Bay County, Kenya</li>
             </ul>
           </div>
         </div>
