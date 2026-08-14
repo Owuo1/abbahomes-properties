@@ -5,7 +5,7 @@ const About = () => {
     <section style={{ padding: '80px 20px', background: 'white' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', color: '#1a1a2e' }}>
-          About <span style={{ color: '#e67e22' }}>Abba Homes</span>
+          About <span style={{ color: '#e67e22' }}>Abba Homes Properties</span>
         </h2>
         <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
           Your Trusted Partner in Land, Rentals & Property Management
