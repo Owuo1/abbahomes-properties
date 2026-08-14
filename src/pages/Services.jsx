@@ -3,7 +3,7 @@ import React from 'react'
 const Services = () => {
   const services = [
     { icon: '🏠', title: 'Property Sales', desc: 'Find your dream home with our extensive listing of properties for sale.' },
-    { icon: '🏢', title: 'Rental Services', desc: 'Discover the perfect rental property in Nairobi\'s best neighborhoods.' },
+    { icon: '🏢', title: 'Rental Services', desc: 'Discover the perfect rental property in Homa Bay\'s best neighborhoods.' },
     { icon: '💰', title: 'Valuation', desc: 'Get expert property valuations to make informed investment decisions.' },
     { icon: '🤝', title: 'Property Management', desc: 'Professional management services for your rental properties.' },
     { icon: '📍', title: 'Land Acquisition', desc: 'Secure prime land for development or investment in Nairobi.' },
