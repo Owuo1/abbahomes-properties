@@ -41,18 +41,24 @@ const Navbar = () => {
           display: 'flex', 
           alignItems: 'center', 
           gap: '12px',
-          flex: '1 1 auto'  // ← FIX 1
+          flex: '1 1 0',      // ← basis 0: logo takes leftover space, never forces a line break
+          minWidth: 0,        // ← allows the logo to shrink below its content width
+          overflow: 'hidden'  // ← safety net so it never pushes the hamburger out
         }}>
           <img 
             src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
             alt="Abba Homes Properties" 
-            style={{ height: '45px', width: 'auto' }}
+            style={{ height: '45px', width: 'auto', flexShrink: 0 }}
           />
-          <Link to="/" style={{ 
+          <Link to="/" className="logo-text" style={{ 
             color: '#4A3520', 
             fontSize: '1.5rem', 
             fontWeight: 'bold',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',      // ← keeps brand text on one line
+            overflow: 'hidden',        // ← truncates instead of overflowing
+            textOverflow: 'ellipsis',  // ← shows "…" if space runs out
+            minWidth: 0                // ← lets the text shrink as a flex item
           }} onClick={closeMenu}>
             Abba Homes Properties
           </Link>
@@ -63,7 +69,7 @@ const Navbar = () => {
           style={{ 
             display: 'block',
             cursor: 'pointer',
-            flex: '0 0 auto'  // ← FIX 2
+            flex: '0 0 auto'  // ← stays fixed-width, pinned to the right edge by space-between
           }}
           className="hamburger" 
           onClick={toggleMenu}
@@ -80,7 +86,7 @@ const Navbar = () => {
           paddingTop: '20px',
           borderTop: '2px solid rgba(74, 53, 32, 0.1)',
           marginTop: '15px',
-          flex: '0 0 100%'  // ← FIX 3
+          flex: '0 0 100%'
         }} className="nav-links">
           {navLinks.map((link) => (
             <Link 
@@ -120,12 +126,20 @@ const Navbar = () => {
       </nav>
 
       <style>{`
+        /* Mobile + tablet: slightly smaller brand text so the full name fits
+           next to the hamburger without truncating */
+        @media (max-width: 768px) {
+          .logo-text {
+            font-size: 1.15rem !important;
+          }
+        }
+
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
           }
           nav {
-            flex-wrap: nowrap !important;  /* ← FIX 4 */
+            flex-wrap: nowrap !important;
           }
           .nav-links {
             display: flex !important;
@@ -135,7 +149,7 @@ const Navbar = () => {
             padding-top: 0 !important;
             border-top: none !important;
             margin-top: 0 !important;
-            flex: 0 0 auto !important;  /* ← FIX 5 */
+            flex: 0 0 auto !important;
           }
           .nav-links a {
             border-bottom: none !important;
