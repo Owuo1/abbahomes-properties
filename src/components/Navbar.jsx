@@ -34,10 +34,10 @@ const Navbar = () => {
         top: 0,
         zIndex: 1000,
         boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)',
-        flexWrap: 'wrap'  // ← CHANGE 1
+        flexWrap: 'wrap'
       }}>
         {/* Logo Section - LEFT SIDE */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', flex: '1 1 auto', gap: '12px' }}>
           <img 
             src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
             alt="Abba Homes Properties" 
@@ -56,7 +56,8 @@ const Navbar = () => {
         {/* Hamburger Icon - RIGHT SIDE */}
         <div 
           style={{ 
-            display: 'block',  // ← CHANGE 2
+            display: 'block',
+            flex: '0 0 auto',
             cursor: 'pointer'
           }}
           className="hamburger" 
@@ -73,6 +74,7 @@ const Navbar = () => {
           gap: '15px',
           paddingTop: '20px',
           borderTop: '2px solid rgba(74, 53, 32, 0.1)',
+          flex: '0 0 100%', 
           marginTop: '15px'
         }} className="nav-links">
           {navLinks.map((link) => (
