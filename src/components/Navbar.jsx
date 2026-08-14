@@ -76,7 +76,10 @@ const Navbar = () => {
           style={{
             display: 'block',
             cursor: 'pointer',
-            flex: '0 0 auto'            // ← no auto margin: sits flush at the RIGHT edge
+            flexGrow: 0,
+            flexShrink: 0,
+            flexBasis: 'auto',
+            marginLeft: 'auto'   // pins it to the right edge, no matter what
           }}
         >
           {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
