@@ -129,7 +129,6 @@ const Footer = () => {
           textAlign: 'center', 
           paddingTop: '30px', 
           borderTop: '1px solid rgba(255,255,255,0.1)',
-          opacity: 0.7,
           color: '#4A3520',
           fontSize: '0.9rem'
         }}>
