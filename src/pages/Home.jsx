@@ -56,11 +56,11 @@ const Home = () => {
       <section style={{ padding: '80px 20px', background: 'white' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', color: '#1a1a2e' }}>
-            Welcome to <span style={{ color: '#e67e22' }}>Abba Homes</span>
+            Welcome to <span style={{ color: '#e67e22' }}>Abba Homes Properties</span>
           </h2>
           <p style={{ color: '#666', maxWidth: '700px', margin: '1rem auto 2rem', lineHeight: 1.8 }}>
             We are a premier real estate agency dedicated to helping you find the perfect property
-            in Nairobi. With years of experience and a commitment to excellence, we make your
+            in Homa Bay County. With years of experience and a commitment to excellence, we make your
             property journey seamless and rewarding.
           </p>
           <Link to="/about">
