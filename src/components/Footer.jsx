@@ -132,7 +132,7 @@ const Footer = () => {
           color: '#4A3520',
           fontSize: '0.9rem'
         }}>
-          &copy; {new Date().getFullYear()} Abba Homes Properties Ltd. All rights reserved.
+          &copy; {new Date().getFullYear()} Abba Homes Properties Ltd. All Rights Reserved.
         </div>
       </div>
     </footer>
