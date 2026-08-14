@@ -83,9 +83,9 @@ const Footer = () => {
               Contact
             </h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}>📞 +254 700 123 456</li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}>✉️ info@abbahomes.com</li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}>📍 Westlands, Nairobi</li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}> +254 100 658430</li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}> info@abbahomes-properties.com</li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}> Rod Kopany, Homa Bay County, Kenya</li>
             </ul>
           </div>
         </div>
