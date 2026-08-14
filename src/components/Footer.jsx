@@ -80,7 +80,7 @@ const Footer = () => {
                 <Link 
                   to="/services" 
                   style={{ 
-                    color: rgba(139, 69, 19, 1)', 
+                    color: 'rgba(139, 69, 19, 1)', 
                     textDecoration: 'none',
                     transition: 'color 0.3s ease'
                   }}
