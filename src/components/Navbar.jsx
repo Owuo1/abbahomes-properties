@@ -23,61 +23,61 @@ const Navbar = () => {
         background: '#FFF5E1',
         padding: '15px 30px',
         display: 'flex',
-        justifyContent: 'space-between',
+        flexDirection: 'column',  // Stack vertically on mobile
         alignItems: 'center',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)'
-        // flexWrap: 'wrap' - REMOVED
       }}>
-        {/* Logo Section - LEFT SIDE */}
-        <div
-          className="logo-section"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            flex: '1 1 auto',  // ← FIX 1
-            minWidth: 0
-          }}
-        >
-          <img
-            src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
-            alt="Abba Homes Properties"
-            style={{ height: '45px', width: 'auto', flexShrink: 0 }}
-          />
-          <Link
-            to="/"
-            onClick={closeMenu}
-            className="logo-text"
+        {/* Logo + Hamburger Container - stays on one line */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%'
+        }}>
+          {/* Logo Section - LEFT SIDE */}
+          <div
+            className="logo-section"
             style={{
-              color: '#4A3520',
-              fontSize: 'clamp(1rem, 2.5vw + 0.4rem, 1.5rem)',
-              fontWeight: 'bold',
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-              minWidth: 0,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              textAlign: 'left'
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
             }}
           >
-            Abba Homes Properties
-          </Link>
-        </div>
+            <img
+              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
+              alt="Abba Homes Properties"
+              style={{ height: '45px', width: 'auto', flexShrink: 0 }}
+            />
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className="logo-text"
+              style={{
+                color: '#4A3520',
+                fontSize: 'clamp(1rem, 2.5vw + 0.4rem, 1.5rem)',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Abba Homes Properties
+            </Link>
+          </div>
 
-        {/* Hamburger Icon - RIGHT SIDE */}
-        <div
-          className="hamburger"
-          onClick={toggleMenu}
-          style={{
-            display: 'block',
-            cursor: 'pointer',
-            flex: '0 0 auto'  // ← FIX 2
-          }}
-        >
-          {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
+          {/* Hamburger Icon - RIGHT SIDE */}
+          <div
+            className="hamburger"
+            onClick={toggleMenu}
+            style={{
+              display: 'block',
+              cursor: 'pointer'
+            }}
+          >
+            {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
+          </div>
         </div>
 
         {/* Navigation Links - HIDDEN UNTIL CLICKED */}
@@ -88,8 +88,7 @@ const Navbar = () => {
           gap: '15px',
           paddingTop: '20px',
           borderTop: '2px solid rgba(74, 53, 32, 0.1)',
-          marginTop: '15px',
-          flex: '0 0 100%'
+          marginTop: '15px'
         }} className="nav-links">
           {navLinks.map((link) => (
             <Link
@@ -129,19 +128,13 @@ const Navbar = () => {
       </nav>
 
       <style>{`
-        /* Mobile + tablet: logo and hamburger stay parallel */
-        @media (max-width: 768px) {
-          .logo-section {
-            flex: 1 1 auto !important;
-          }
-          .logo-text {
-            text-align: left !important;
-          }
-        }
-
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
+          }
+          nav {
+            flex-direction: row !important;
+            justify-content: space-between !important;
           }
           .nav-links {
             display: flex !important;
@@ -151,7 +144,6 @@ const Navbar = () => {
             padding-top: 0 !important;
             border-top: none !important;
             margin-top: 0 !important;
-            flex: 0 0 auto !important;
           }
           .nav-links a {
             border-bottom: none !important;
