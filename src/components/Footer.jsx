@@ -46,33 +46,69 @@ const Footer = () => {
               Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
             </p>
           </div>
+          {/* Quick Links - FIXED VERSION */}
           <div>
             <h4 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#e67e22' }}>
               Quick Links
             </h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
+                <Link 
+                  to="/" 
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.7)', 
+                    textDecoration: 'none',
+                    transition: 'color 0.3s ease'
+                  }}
+                >
                   Home
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/about" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
+                <Link 
+                  to="/about" 
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.7)', 
+                    textDecoration: 'none',
+                    transition: 'color 0.3s ease'
+                  }}
+                >
                   About Us
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/services" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
+                <Link 
+                  to="/services" 
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.7)', 
+                    textDecoration: 'none',
+                    transition: 'color 0.3s ease'
+                  }}
+                >
                   Services
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/properties" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
+                <Link 
+                  to="/properties" 
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.7)', 
+                    textDecoration: 'none',
+                    transition: 'color 0.3s ease'
+                  }}
+                >
                   Properties
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/contact" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
+                <Link 
+                  to="/contact" 
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.7)', 
+                    textDecoration: 'none',
+                    transition: 'color 0.3s ease'
+                  }}
+                >
                   Contact
                 </Link>
               </li>
