@@ -15,11 +15,34 @@ const Footer = () => {
           gap: '40px', 
           marginBottom: '40px' 
         }}>
-          <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#e67e22' }}>
-              🏠 Abba Homes
+          <div style={{ textAlign: 'center' }}>
+            {/* Logo */}
+            <img 
+              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
+              alt="Abba Homes Properties" 
+              style={{ 
+                height: '60px', 
+                width: 'auto', 
+                marginBottom: '0.75rem' 
+              }} 
+            />
+            
+            {/* Brand Name */}
+            <h4 style={{ 
+              fontSize: '1.2rem', 
+              marginBottom: '0.5rem', 
+              color: '#e67e22' 
+            }}>
+              Abba Homes
             </h4>
-            <p style={{ opacity: 0.8, lineHeight: 1.6 }}>
+            
+            {/* Tagline */}
+            <p style={{ 
+              opacity: 0.8, 
+              lineHeight: 1.6, 
+              maxWidth: '300px', 
+              margin: '0 auto' 
+            }}>
               Premier real estate agency in Nairobi, helping you find your dream home in Kenya's capital.
             </p>
           </div>
