@@ -77,7 +77,7 @@ const About = () => {
               transition: 'transform 0.3s ease'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌍</div>
-              <h4 style={{ fontSize: '1.3rem, color: '#1a1a2e', marginBottom: '0.5rem' }}>
+              <h4 style={{ fontSize: '1.3rem', color: '#1a1a2e', marginBottom: '0.5rem' }}>
                 Available Land
               </h4>
               <p style={{ color: '#666', lineHeight: 1.6 }}>
@@ -96,7 +96,7 @@ const About = () => {
               transition: 'transform 0.3s ease'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🏠</div>
-              <h4 style={{ fontSize: '1.3rem, color: '#1a1a2e', marginBottom: '0.5rem' }}>
+              <h4 style={{ fontSize: '1.3rem', color: '#1a1a2e', marginBottom: '0.5rem' }}>
                 Rental Apartments & Houses
               </h4>
               <p style={{ color: '#666', lineHeight: 1.6 }}>
@@ -115,7 +115,7 @@ const About = () => {
               transition: 'transform 0.3s ease'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔑</div>
-              <h4 style={{ fontSize: '1.3rem, color: '#1a1a2e', marginBottom: '0.5rem' }}>
+              <h4 style={{ fontSize: '1.3rem', color: '#1a1a2e', marginBottom: '0.5rem' }}>
                 Apartment Management
               </h4>
               <p style={{ color: '#666', lineHeight: 1.6 }}>
