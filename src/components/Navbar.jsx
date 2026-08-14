@@ -37,7 +37,12 @@ const Navbar = () => {
         flexWrap: 'wrap'
       }}>
         {/* Logo Section - LEFT SIDE */}
-        <div style={{ display: 'flex', alignItems: 'center', flex: '1 1 auto', gap: '12px' }}>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '12px',
+          flex: '1 1 auto'  // ← FIX 1
+        }}>
           <img 
             src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
             alt="Abba Homes Properties" 
@@ -57,8 +62,8 @@ const Navbar = () => {
         <div 
           style={{ 
             display: 'block',
-            flex: '0 0 auto',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            flex: '0 0 auto'  // ← FIX 2
           }}
           className="hamburger" 
           onClick={toggleMenu}
@@ -68,14 +73,14 @@ const Navbar = () => {
 
         {/* Navigation Links - HIDDEN UNTIL CLICKED */}
         <div style={{ 
-          display: isOpen ? 'flex' : 'none',  // ← CHANGE 3
+          display: isOpen ? 'flex' : 'none',
           flexDirection: 'column',
           width: '100%',
           gap: '15px',
           paddingTop: '20px',
           borderTop: '2px solid rgba(74, 53, 32, 0.1)',
-          flex: '0 0 100%', 
-          marginTop: '15px'
+          marginTop: '15px',
+          flex: '0 0 100%'  // ← FIX 3
         }} className="nav-links">
           {navLinks.map((link) => (
             <Link 
@@ -114,11 +119,13 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* CHANGE 4: CSS for Desktop */}
       <style>{`
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
+          }
+          nav {
+            flex-wrap: nowrap !important;  /* ← FIX 4 */
           }
           .nav-links {
             display: flex !important;
@@ -128,6 +135,7 @@ const Navbar = () => {
             padding-top: 0 !important;
             border-top: none !important;
             margin-top: 0 !important;
+            flex: 0 0 auto !important;  /* ← FIX 5 */
           }
           .nav-links a {
             border-bottom: none !important;
