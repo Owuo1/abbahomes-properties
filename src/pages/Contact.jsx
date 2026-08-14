@@ -44,7 +44,7 @@ const Contact = () => {
                 }}>📞</div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', color: '#1a1a2e' }}>Phone</h4>
-                  <p style={{ color: '#666' }}>+254 700 123 456</p>
+                  <p style={{ color: '#666' }}>+254 100 658430</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
@@ -61,7 +61,7 @@ const Contact = () => {
                 }}>✉️</div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', color: '#1a1a2e' }}>Email</h4>
-                  <p style={{ color: '#666' }}>info@abbahomes.com</p>
+                  <p style={{ color: '#666' }}>info@abbahomes-properties.com</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
@@ -78,7 +78,7 @@ const Contact = () => {
                 }}>📍</div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', color: '#1a1a2e' }}>Address</h4>
-                  <p style={{ color: '#666' }}>Westlands, Nairobi, Kenya</p>
+                  <p style={{ color: '#666' }}>Rod Kopany, Homa Bay County, Kenya</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
