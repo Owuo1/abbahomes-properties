@@ -1,8 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { githubPagesSpa } from '@sctg/vite-plugin-github-pages-spa'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    githubPagesSpa({
+      verbose: true,  // Optional: shows what the plugin is doing
+    })
+  ],
   base: '/',
   server: {
     port: 3000,
@@ -10,7 +16,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    minify: 'terser',  // Use terser (now installed)
+    minify: 'terser',
     sourcemap: false,
     rollupOptions: {
       output: {
