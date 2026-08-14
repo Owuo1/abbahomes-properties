@@ -34,9 +34,9 @@ const Navbar = () => {
         top: 0,
         zIndex: 1000,
         boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap'  // ← CHANGE 1
       }}>
-        {/* Logo Section */}
+        {/* Logo Section - LEFT SIDE */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <img 
             src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
@@ -53,20 +53,21 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Hamburger Icon */}
+        {/* Hamburger Icon - RIGHT SIDE */}
         <div 
           style={{ 
-            cursor: 'pointer',
-            display: 'block'
+            display: 'block',  // ← CHANGE 2
+            cursor: 'pointer'
           }}
+          className="hamburger" 
           onClick={toggleMenu}
         >
           {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
         </div>
 
-        {/* Navigation Links */}
+        {/* Navigation Links - HIDDEN UNTIL CLICKED */}
         <div style={{ 
-          display: isOpen ? 'flex' : 'none',
+          display: isOpen ? 'flex' : 'none',  // ← CHANGE 3
           flexDirection: 'column',
           width: '100%',
           gap: '15px',
@@ -111,7 +112,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Media Query CSS */}
+      {/* CHANGE 4: CSS for Desktop */}
       <style>{`
         @media (min-width: 769px) {
           .hamburger {
@@ -130,6 +131,7 @@ const Navbar = () => {
             border-bottom: none !important;
             padding: 0 !important;
             width: auto !important;
+            text-align: left !important;
           }
           .nav-links button {
             width: auto !important;
