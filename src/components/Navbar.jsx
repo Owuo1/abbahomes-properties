@@ -32,15 +32,18 @@ const Navbar = () => {
         flexWrap: 'wrap'
       }}>
         {/* Logo Section - LEFT SIDE */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          flexGrow: 1,
-          flexShrink: 1,
-          flexBasis: 'auto',
-          minWidth: 0          // allows shrinking so it never forces a line wrap
-        }}>
+        <div
+          className="logo-section"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            flex: '0 0 auto',
+            minWidth: 0,
+            marginRight: 'auto',        // ← logo owns the free space → hugs the LEFT edge
+            justifyContent: 'flex-start' // ← explicit: logo contents stay left
+          }}
+        >
           <img
             src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
             alt="Abba Homes Properties"
@@ -49,15 +52,17 @@ const Navbar = () => {
           <Link
             to="/"
             onClick={closeMenu}
+            className="logo-text"
             style={{
               color: '#4A3520',
-              fontSize: 'clamp(1rem, 2.5vw + 0.4rem, 1.5rem)', // fluid: scales with screen
+              fontSize: 'clamp(1rem, 2.5vw + 0.4rem, 1.5rem)',
               fontWeight: 'bold',
               textDecoration: 'none',
               whiteSpace: 'nowrap',
               minWidth: 0,
               overflow: 'hidden',
-              textOverflow: 'ellipsis'
+              textOverflow: 'ellipsis',
+              textAlign: 'left'
             }}
           >
             Abba Homes Properties
@@ -71,10 +76,7 @@ const Navbar = () => {
           style={{
             display: 'block',
             cursor: 'pointer',
-            flexGrow: 0,
-            flexShrink: 0,
-            flexBasis: 'auto',
-            marginLeft: 'auto'   // pins it to the right edge, no matter what
+            flex: '0 0 auto'            // ← no auto margin: sits flush at the RIGHT edge
           }}
         >
           {isOpen ? <FaTimes size={28} color="#4A3520" /> : <FaBars size={28} color="#4A3520" />}
@@ -129,6 +131,17 @@ const Navbar = () => {
       </nav>
 
       <style>{`
+        /* Mobile + tablet: force the logo left in case any global CSS interferes */
+        @media (max-width: 768px) {
+          .logo-section {
+            margin-right: auto !important;
+            justify-content: flex-start !important;
+          }
+          .logo-text {
+            text-align: left !important;
+          }
+        }
+
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
