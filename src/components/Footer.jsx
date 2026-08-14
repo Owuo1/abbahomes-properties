@@ -33,7 +33,7 @@ const Footer = () => {
               marginBottom: '0.5rem', 
               color: '#e67e22' 
             }}>
-              Abba Homes
+              Abba Homes Properties
             </h4>
             
             {/* Tagline */}
@@ -43,7 +43,7 @@ const Footer = () => {
               maxWidth: '300px', 
               margin: '0 auto' 
             }}>
-              Premier real estate agency in Nairobi, helping you find your dream home in Kenya's capital.
+              Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
             </p>
           </div>
           <div>
@@ -52,27 +52,27 @@ const Footer = () => {
             </h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
+                <Link to="/" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
                   Home
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/about" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
+                <Link to="/about" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
                   About Us
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/services" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
+                <Link to="/services" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
                   Services
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/properties" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
+                <Link to="/properties" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
                   Properties
                 </Link>
               </li>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/contact" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
+                <Link to="/contact" style={{ color: 'rgba(139, 69, 19, 1)', textDecoration: 'none' }}>
                   Contact
                 </Link>
               </li>
