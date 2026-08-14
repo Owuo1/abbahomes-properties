@@ -38,7 +38,7 @@ const Navbar = () => {
           fontWeight: 'bold',
           textDecoration: 'none'
         }}>
-          Abba<span style={{ color: '#e67e22' }}>Homes</span>
+          Abba Homes Properties
         </Link>
       </div>
       
