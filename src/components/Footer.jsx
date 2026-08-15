@@ -1,3 +1,4 @@
+```jsx
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -24,69 +25,60 @@ const Footer = () => {
       </style>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div 
+        <div
           className="footer-grid"
-          style={{ 
-            display: 'grid', 
-            gap: '40px', 
-            marginBottom: '40px' 
+          style={{
+            display: 'grid',
+            gap: '40px',
+            marginBottom: '40px'
           }}
         >
 
           {/* Logo & Brand Section */}
-          <div style={{ 
-            textAlign: 'center',
+          <div style={{
             background: '#FFFFFF',
             color: '#0B1F3A',
             padding: '20px',
-            borderRadius: '8px'
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '12px'
           }}>
             {/* Logo */}
-            <img 
-              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
-              alt="Abba Homes & Properties" 
-              style={{ 
-                height: '60px', 
-                width: 'auto', 
-                marginBottom: '0.75rem' 
-              }} 
+            <img
+              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
+              alt="Abba Homes & Properties"
+              style={{
+                height: '60px',
+                width: 'auto'
+              }}
             />
-            
+
             {/* Brand Name */}
-            <h4 style={{ 
-              fontSize: '1.2rem', 
-              marginBottom: '0.5rem', 
-              color: '#e67e22' 
+            <h4 style={{
+              fontSize: '1.2rem',
+              margin: 0,
+              color: '#e67e22'
             }}>
               Abba Homes & Properties
             </h4>
-            
-            {/* Tagline */}
-            <p style={{ 
-              opacity: 0.8, 
-              lineHeight: 1.6, 
-              maxWidth: '300px', 
-              margin: '0 auto',
-              color: '#0B1F3A'
-            }}>
-              Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
-            </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 style={{ 
-              fontSize: '1.2rem', 
-              marginBottom: '1rem', 
-              color: '#e67e22' 
+            <h4 style={{
+              fontSize: '1.2rem',
+              marginBottom: '1rem',
+              color: '#e67e22'
             }}>
               Quick Links
             </h4>
 
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/" style={{ 
-                  color: 'rgba(255, 255, 255, 1)', 
+                <Link to="/" style={{
+                  color: 'rgba(255, 255, 255, 1)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -95,8 +87,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/about" style={{ 
-                  color: 'rgba(255, 255, 255, 1)', 
+                <Link to="/about" style={{
+                  color: 'rgba(255, 255, 255, 1)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -105,8 +97,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/services" style={{ 
-                  color: 'rgba(255, 255, 255, 1)', 
+                <Link to="/services" style={{
+                  color: 'rgba(255, 255, 255, 1)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -115,8 +107,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/properties" style={{ 
-                  color: 'rgba(255, 255, 255, 1)', 
+                <Link to="/properties" style={{
+                  color: 'rgba(255, 255, 255, 1)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -125,8 +117,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/contact" style={{ 
-                  color: 'rgba(255, 255, 255, 1)', 
+                <Link to="/contact" style={{
+                  color: 'rgba(255, 255, 255, 1)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -138,10 +130,10 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 style={{ 
-              fontSize: '1.2rem', 
-              marginBottom: '1rem', 
-              color: '#e67e22' 
+            <h4 style={{
+              fontSize: '1.2rem',
+              marginBottom: '1rem',
+              color: '#e67e22'
             }}>
               Contact
             </h4>
@@ -150,9 +142,11 @@ const Footer = () => {
               <li style={{ marginBottom: '10px', opacity: 0.8 }}>
                 +254 100 658430
               </li>
+
               <li style={{ marginBottom: '10px', opacity: 0.8 }}>
                 info@abbahomes-properties.com
               </li>
+
               <li style={{ marginBottom: '10px', opacity: 0.8 }}>
                 Homa Bay, Kenya
               </li>
@@ -160,11 +154,11 @@ const Footer = () => {
           </div>
 
         </div>
-        
+
         {/* Copyright */}
-        <div style={{ 
-          textAlign: 'center', 
-          paddingTop: '30px', 
+        <div style={{
+          textAlign: 'center',
+          paddingTop: '30px',
           borderTop: '1px solid rgba(255,255,255,0.1)',
           color: '#FFFFFF',
           fontSize: '0.9rem'
@@ -178,3 +172,4 @@ const Footer = () => {
 }
 
 export default Footer
+```
