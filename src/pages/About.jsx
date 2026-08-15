@@ -14,7 +14,7 @@ const About = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
           <div>
             <img 
-              src="https://i.ibb.co/WpGpXkwn/hb.jpg" 
+              src="https://ibb.co/Vc3pCCNj/hh.jpg" 
               alt="Nairobi Properties"
               style={{ width: '100%', borderRadius: '15px' }}
             />
