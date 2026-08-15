@@ -56,7 +56,7 @@ const Footer = () => {
                 <Link 
                   to="/" 
                   style={{ 
-                    color: 'rgba(139, 69, 19, 1)', 
+                    color: 'rgba(255, 255, 255, 1)', 
                     textDecoration: 'none',
                     transition: 'color 0.3s ease'
                   }}
@@ -68,7 +68,7 @@ const Footer = () => {
                 <Link 
                   to="/about" 
                   style={{ 
-                    color: 'rgba(139, 69, 19, 1)', 
+                    color: 'rgba(255, 255, 255, 1)', 
                     textDecoration: 'none',
                     transition: 'color 0.3s ease'
                   }}
@@ -80,7 +80,7 @@ const Footer = () => {
                 <Link 
                   to="/services" 
                   style={{ 
-                    color: 'rgba(139, 69, 19, 1)', 
+                    color: 'rgba(255, 255, 255, 1)', 
                     textDecoration: 'none',
                     transition: 'color 0.3s ease'
                   }}
@@ -92,7 +92,7 @@ const Footer = () => {
                 <Link 
                   to="/properties" 
                   style={{ 
-                    color: 'rgba(139, 69, 19, 1)', 
+                    color: 'rgba(255, 255, 255, 1)', 
                     textDecoration: 'none',
                     transition: 'color 0.3s ease'
                   }}
@@ -104,7 +104,7 @@ const Footer = () => {
                 <Link 
                   to="/contact" 
                   style={{ 
-                    color: 'rgba(139, 69, 19, 1)', 
+                    color: 'rgba(255, 255, 255, 1)', 
                     textDecoration: 'none',
                     transition: 'color 0.3s ease'
                   }}
