@@ -141,7 +141,7 @@ const Home = () => {
             Find Your <span style={{ color: '#e67e22' }}>Dream Properties</span> in Homa Bay County
           </h1>
           <p style={{ fontSize: '1.2rem', opacity: 0.9, lineHeight: 1.6, marginBottom: '2rem' }}>
-            Discover premium properties across Homa Bay County. From modern apartments, Rentals, and land,
+            Discover premium properties across Homa Bay County. From modern apartments, rentals, and land,
             we have the perfect home for you.
           </p>
           <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
