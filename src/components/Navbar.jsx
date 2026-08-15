@@ -135,6 +135,11 @@ const Navbar = () => {
           nav {
             flex-direction: row !important;
             justify-content: space-between !important;
+            align-items: center !important;
+          }
+        
+          nav > div:first-child {
+            width: auto !important;
           }
           .nav-links {
             display: flex !important;
