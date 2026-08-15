@@ -149,7 +149,7 @@ const Footer = () => {
                 textAlign: 'left'
               }}
             >
-             Abba Homes & Properties is a trusted partner for property owners seeking reliable, full-service management solutions. We specialize in residential and multi-family properties, offering expert tenant screening, and timely rent collection.
+             Abba Homes & Properties is a trusted partner for property owners seeking reliable, full-service management solutions. We specialize in land sales, residential and multi-family properties, offering expert tenant screening, and timely rent collection.
             </p>
           </div>
 
