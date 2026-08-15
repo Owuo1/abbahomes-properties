@@ -149,7 +149,7 @@ const Footer = () => {
                 textAlign: 'left'
               }}
             >
-              Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
+             Abba Homes & Properties is a trusted partner for property owners seeking reliable, full-service management solutions. We specialize in residential and multi-family properties, offering expert tenant screening, timely rent collection, 24/7 maintenance coordination, and detailed financial reporting. At Abba Homes & Properties, we pride ourselves on transparent communication, personalized service, and a commitment to protecting your investment while maximizing your returns. Let us handle the day-to-day so you can enjoy peace of mind and long-term success.
             </p>
           </div>
 
@@ -274,7 +274,7 @@ const Footer = () => {
                 alignItems: 'center',
                 gap: '10px'
               }}>
-                <FaPhone size={14} /> +254 100 658430
+                <FaPhone size={14} /> +254 100 658430/+254703388001
               </li>
               <li style={{ 
                 marginBottom: '10px', 
