@@ -15,6 +15,35 @@ const Footer = () => {
             grid-template-columns: 1fr;
           }
 
+          /* Mobile & Tablet: Center all content */
+          @media (max-width: 767px) {
+            .footer-grid {
+              justify-items: center;
+              text-align: center;
+            }
+            
+            .logo-wrapper {
+              justify-content: center !important;
+            }
+            
+            .logo-name {
+              text-align: center !important;
+            }
+            
+            .footer-text {
+              text-align: center !important;
+            }
+            
+            .contact-list li {
+              justify-content: center !important;
+            }
+            
+            .social-wrapper {
+              display: flex !important;
+              justify-content: center !important;
+            }
+          }
+
           @media (min-width: 768px) {
             .footer-grid {
               grid-template-columns: 1.5fr 1fr 1fr;
@@ -39,15 +68,21 @@ const Footer = () => {
             background: '#FFFFFF',
             color: '#0B1F3A',
             padding: '20px',
-            borderRadius: '8px'
+            borderRadius: '8px',
+            width: '100%',
+            maxWidth: '400px',
+            justifySelf: 'center'
           }}>
             {/* Logo & Name - Side by Side */}
-            <div style={{ 
-              display: 'flex',
-              alignItems: 'center',
-              gap: '15px',
-              marginBottom: '12px'
-            }}>
+            <div 
+              className="logo-wrapper"
+              style={{ 
+                display: 'flex',
+                alignItems: 'center',
+                gap: '15px',
+                marginBottom: '12px'
+              }}
+            >
               <img 
                 src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
                 alt="Abba Homes & Properties" 
@@ -58,40 +93,57 @@ const Footer = () => {
                 }} 
               />
               
-              <h4 style={{ 
-                fontSize: '1.2rem', 
-                margin: 0, 
-                color: '#e67e22',
-                textAlign: 'left'
-              }}>
+              <h4 
+                className="logo-name"
+                style={{ 
+                  fontSize: '1.2rem', 
+                  margin: 0, 
+                  color: '#e67e22',
+                  textAlign: 'left'
+                }}
+              >
                 Abba Homes & Properties
               </h4>
             </div>
             
             {/* Content Below */}
-            <p style={{ 
-              opacity: 0.8, 
-              lineHeight: 1.6, 
-              color: '#0B1F3A',
-              fontSize: '0.95rem',
-              margin: 0,
-              textAlign: 'left'
-            }}>
+            <p 
+              className="footer-text"
+              style={{ 
+                opacity: 0.8, 
+                lineHeight: 1.6, 
+                color: '#0B1F3A',
+                fontSize: '0.95rem',
+                margin: 0,
+                textAlign: 'left'
+              }}
+            >
               Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div style={{ 
+            width: '100%',
+            maxWidth: '300px',
+            justifySelf: 'center',
+            textAlign: 'left'
+          }}>
             <h4 style={{ 
               fontSize: '1.2rem', 
               marginBottom: '1rem', 
-              color: '#e67e22' 
+              color: '#e67e22',
+              textAlign: 'inherit'
             }}>
               Quick Links
             </h4>
 
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <ul style={{ 
+              listStyle: 'none', 
+              padding: 0, 
+              margin: 0,
+              textAlign: 'inherit'
+            }}>
               <li style={{ marginBottom: '10px' }}>
                 <Link to="/" style={{ 
                   color: 'rgba(255, 255, 255, 1)', 
@@ -145,16 +197,30 @@ const Footer = () => {
           </div>
 
           {/* Contact & Social */}
-          <div>
+          <div style={{ 
+            width: '100%',
+            maxWidth: '300px',
+            justifySelf: 'center',
+            textAlign: 'left'
+          }}>
             <h4 style={{ 
               fontSize: '1.2rem', 
               marginBottom: '1rem', 
-              color: '#e67e22' 
+              color: '#e67e22',
+              textAlign: 'inherit'
             }}>
               Contact
             </h4>
 
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <ul 
+              className="contact-list"
+              style={{ 
+                listStyle: 'none', 
+                padding: 0, 
+                margin: 0,
+                textAlign: 'inherit'
+              }}
+            >
               <li style={{ 
                 marginBottom: '10px', 
                 opacity: 0.8,
@@ -185,7 +251,10 @@ const Footer = () => {
             </ul>
 
             {/* Facebook Icon Link */}
-            <div style={{ marginTop: '20px' }}>
+            <div 
+              className="social-wrapper"
+              style={{ marginTop: '20px' }}
+            >
               <a 
                 href="https://facebook.com/abbahomesproperties" 
                 target="_blank" 
