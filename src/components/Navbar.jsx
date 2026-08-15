@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes, FaPlus } from 'react-icons/fa'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,20 +17,26 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
+  // ✅ FIX: Define the toggleAdmin function correctly
+  const toggleAdmin = () => {
+    // Dispatch a custom event that AdminPanel listens for
+    document.dispatchEvent(new CustomEvent('toggleAdmin'))
+  }
+
   return (
     <>
       <nav style={{
         background: '#FFF5E1',
         padding: '15px 30px',
         display: 'flex',
-        flexDirection: 'column',  // Stack vertically on mobile
+        flexDirection: 'column',
         alignItems: 'center',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)'
       }}>
-        {/* Logo + Hamburger Container - stays on one line */}
+        {/* Logo + Hamburger Container */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -80,7 +86,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Navigation Links - HIDDEN UNTIL CLICKED */}
+        {/* Navigation Links */}
         <div style={{
           display: isOpen ? 'flex' : 'none',
           flexDirection: 'column',
@@ -108,7 +114,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-           {/* Admin Button - ADD LISTING */}
+          {/* ✅ FIX: Use the toggleAdmin function correctly */}
           <button
             className="nav-admin-btn"
             onClick={toggleAdmin}
@@ -140,11 +146,6 @@ const Navbar = () => {
           nav {
             flex-direction: row !important;
             justify-content: space-between !important;
-            align-items: center !important;
-          }
-        
-          nav > div:first-child {
-            width: auto !important;
           }
           .nav-links {
             display: flex !important;
