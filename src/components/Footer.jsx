@@ -24,60 +24,74 @@ const Footer = () => {
       </style>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div
+        <div 
           className="footer-grid"
-          style={{
-            display: 'grid',
-            gap: '40px',
-            marginBottom: '40px'
+          style={{ 
+            display: 'grid', 
+            gap: '40px', 
+            marginBottom: '40px' 
           }}
         >
 
-          {/* Logo & Brand Section */}
-          <div style={{
+          {/* Logo & Brand Section - SIDE BY SIDE */}
+          <div style={{ 
+            display: 'flex',
+            alignItems: 'center',
+            gap: '15px',
             background: '#FFFFFF',
             color: '#0B1F3A',
             padding: '20px',
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '12px'
+            borderRadius: '8px'
           }}>
             {/* Logo */}
-            <img
-              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
-              alt="Abba Homes & Properties"
-              style={{
-                height: '60px',
-                width: 'auto'
-              }}
+            <img 
+              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
+              alt="Abba Homes & Properties" 
+              style={{ 
+                height: '60px', 
+                width: 'auto', 
+                flexShrink: 0
+              }} 
             />
-
-            {/* Brand Name */}
-            <h4 style={{
-              fontSize: '1.2rem',
-              margin: 0,
-              color: '#e67e22'
-            }}>
-              Abba Homes & Properties
-            </h4>
+            
+            {/* Brand Name & Tagline */}
+            <div>
+              <h4 style={{ 
+                fontSize: '1.2rem', 
+                marginBottom: '0.25rem', 
+                color: '#e67e22',
+                textAlign: 'left'
+              }}>
+                Abba Homes & Properties
+              </h4>
+              
+              <p style={{ 
+                opacity: 0.8, 
+                lineHeight: 1.4, 
+                color: '#0B1F3A',
+                fontSize: '0.9rem',
+                margin: 0,
+                textAlign: 'left'
+              }}>
+                Premier real estate agency in Homa Bay County
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 style={{
-              fontSize: '1.2rem',
-              marginBottom: '1rem',
-              color: '#e67e22'
+            <h4 style={{ 
+              fontSize: '1.2rem', 
+              marginBottom: '1rem', 
+              color: '#e67e22' 
             }}>
               Quick Links
             </h4>
 
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/" style={{
-                  color: 'rgba(255, 255, 255, 1)',
+                <Link to="/" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -86,8 +100,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/about" style={{
-                  color: 'rgba(255, 255, 255, 1)',
+                <Link to="/about" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -96,8 +110,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/services" style={{
-                  color: 'rgba(255, 255, 255, 1)',
+                <Link to="/services" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -106,8 +120,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/properties" style={{
-                  color: 'rgba(255, 255, 255, 1)',
+                <Link to="/properties" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -116,8 +130,8 @@ const Footer = () => {
               </li>
 
               <li style={{ marginBottom: '10px' }}>
-                <Link to="/contact" style={{
-                  color: 'rgba(255, 255, 255, 1)',
+                <Link to="/contact" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>
@@ -127,12 +141,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact & Social */}
           <div>
-            <h4 style={{
-              fontSize: '1.2rem',
-              marginBottom: '1rem',
-              color: '#e67e22'
+            <h4 style={{ 
+              fontSize: '1.2rem', 
+              marginBottom: '1rem', 
+              color: '#e67e22' 
             }}>
               Contact
             </h4>
@@ -141,23 +155,48 @@ const Footer = () => {
               <li style={{ marginBottom: '10px', opacity: 0.8 }}>
                 +254 100 658430
               </li>
-
               <li style={{ marginBottom: '10px', opacity: 0.8 }}>
                 info@abbahomes-properties.com
               </li>
-
               <li style={{ marginBottom: '10px', opacity: 0.8 }}>
                 Homa Bay, Kenya
               </li>
             </ul>
+
+            {/* Facebook Link - NEW */}
+            <div style={{ marginTop: '20px' }}>
+              <a 
+                href="https://facebook.com/abbahomesproperties" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  color: '#FFFFFF',
+                  textDecoration: 'none',
+                  backgroundColor: '#1877F2',
+                  padding: '10px 20px',
+                  borderRadius: '8px',
+                  fontWeight: 'bold',
+                  transition: 'background-color 0.3s ease',
+                  fontSize: '0.95rem'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#145dbf'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#1877F2'}
+              >
+                <span style={{ fontSize: '1.2rem' }}>📘</span> 
+                Follow us on Facebook
+              </a>
+            </div>
           </div>
 
         </div>
-
+        
         {/* Copyright */}
-        <div style={{
-          textAlign: 'center',
-          paddingTop: '30px',
+        <div style={{ 
+          textAlign: 'center', 
+          paddingTop: '30px', 
           borderTop: '1px solid rgba(255,255,255,0.1)',
           color: '#FFFFFF',
           fontSize: '0.9rem'
@@ -171,4 +210,3 @@ const Footer = () => {
 }
 
 export default Footer
-```
