@@ -212,7 +212,7 @@ const Home = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <div>
                 <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  🌍 Available <span style={{ color: '#e67e22' }}>Land</span>
+                  Available <span style={{ color: '#e67e22' }}>Land</span>
                 </h2>
                 <p style={{ color: '#666', marginTop: '0.5rem' }}>
                   Prime plots and land parcels for sale across Homa Bay County
@@ -252,7 +252,7 @@ const Home = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <div>
                 <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  🏢 Available <span style={{ color: '#e67e22' }}>Apartments</span>
+                  Available <span style={{ color: '#e67e22' }}>Apartments</span>
                 </h2>
                 <p style={{ color: '#666', marginTop: '0.5rem' }}>
                   Modern apartments in prime locations across Homa Bay County
@@ -292,7 +292,7 @@ const Home = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <div>
                 <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  🏠 Available <span style={{ color: '#e67e22' }}>Houses</span>
+                  Available <span style={{ color: '#e67e22' }}>Houses</span>
                 </h2>
                 <p style={{ color: '#666', marginTop: '0.5rem' }}>
                   Spacious family homes in desirable neighborhoods
