@@ -5,7 +5,7 @@ const About = () => {
     <section style={{ padding: '80px 20px', background: 'white' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', color: '#1a1a2e' }}>
-          About <span style={{ color: '#e67e22' }}>Abba Homes Properties</span>
+          About <span style={{ color: '#e67e22' }}>Abba Homes & Properties</span>
         </h2>
         <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
           Your Trusted Partner in Land, Rentals & Property Management
@@ -24,14 +24,14 @@ const About = () => {
               Your Trusted <span style={{ color: '#e67e22' }}>Real Estate Partner</span>
             </h3>
             <p style={{ color: '#666', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              Abba Homes Properties Ltd is a premier real estate agency dedicated to 
+              Abba Homes & Properties Ltd is a premier real estate agency dedicated to 
               connecting you with the best <strong>available land, rental apartments, 
-              and houses</strong> in Nairobi. Whether you're looking to invest in prime 
+              and houses</strong> in Homa Bay County. Whether you're looking to invest in prime 
               land, find your dream rental home, or need professional 
               <strong> apartment management services</strong>, we've got you covered.
             </p>
             <p style={{ color: '#666', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              With years of experience in Nairobi's dynamic property market, we 
+              With years of experience in Kenya's dynamic property market, we 
               understand the unique needs of both property owners and tenants. 
               Our commitment to excellence ensures that your property journey — 
               from finding the perfect rental to managing your investment — is 
@@ -39,7 +39,7 @@ const About = () => {
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#e67e22' }}>500+</div>
+                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#e67e22' }}>50+</div>
                 <div style={{ color: '#666', fontSize: '0.9rem' }}>Properties Managed</div>
               </div>
               <div style={{ textAlign: 'center' }}>
@@ -81,7 +81,7 @@ const About = () => {
                 Available Land
               </h4>
               <p style={{ color: '#666', lineHeight: 1.6 }}>
-                Prime plots and land parcels for sale across Nairobi. Whether for 
+                Prime plots and land parcels for sale across Homa Bay County. Whether for 
                 residential or commercial development, we have the perfect location 
                 for your investment.
               </p>
@@ -101,7 +101,7 @@ const About = () => {
               </h4>
               <p style={{ color: '#666', lineHeight: 1.6 }}>
                 Quality rental properties for every budget. From cozy apartments 
-                to spacious family homes, find your perfect rental in Nairobi's 
+                to spacious family homes, find your perfect rental in Homa Bay County's 
                 best neighborhoods.
               </p>
             </div>
@@ -133,7 +133,7 @@ const About = () => {
             Why Choose <span style={{ color: '#e67e22' }}>Us</span>
           </h3>
           <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
-            What makes Abba Homes Properties your ideal real estate partner
+            What makes Abba Homes & Properties your ideal real estate partner
           </p>
 
           <div style={{ 
@@ -159,7 +159,7 @@ const About = () => {
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🏆</div>
               <h4 style={{ color: '#1a1a2e' }}>Proven Results</h4>
-              <p style={{ color: '#666', fontSize: '0.9rem' }}>500+ properties successfully managed</p>
+              <p style={{ color: '#666', fontSize: '0.9rem' }}>50+ properties successfully managed</p>
             </div>
           </div>
         </div>
