@@ -129,7 +129,7 @@ const Footer = () => {
           textAlign: 'center', 
           paddingTop: '30px', 
           borderTop: '1px solid rgba(255,255,255,0.1)',
-          color: '#4A3520',
+          color: '#FFFFFF',
           fontSize: '0.9rem'
         }}>
           &copy; {new Date().getFullYear()} Abba Homes Properties Ltd. All Rights Reserved.
