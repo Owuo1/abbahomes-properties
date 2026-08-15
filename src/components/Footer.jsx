@@ -58,7 +58,7 @@ const Footer = () => {
               marginBottom: '0.5rem', 
               color: '#e67e22' 
             }}>
-              Abba Homes Properties
+              Abba Homes & Properties
             </h4>
             
             {/* Tagline */}
