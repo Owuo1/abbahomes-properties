@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaFacebook, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 
 const Footer = () => {
   return (
@@ -33,49 +34,51 @@ const Footer = () => {
           }}
         >
 
-          {/* Logo & Brand Section - SIDE BY SIDE */}
+          {/* Logo & Brand Section */}
           <div style={{ 
-            display: 'flex',
-            alignItems: 'center',
-            gap: '15px',
             background: '#FFFFFF',
             color: '#0B1F3A',
             padding: '20px',
             borderRadius: '8px'
           }}>
-            {/* Logo */}
-            <img 
-              src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
-              alt="Abba Homes & Properties" 
-              style={{ 
-                height: '60px', 
-                width: 'auto', 
-                flexShrink: 0
-              }} 
-            />
-            
-            {/* Brand Name & Tagline */}
-            <div>
+            {/* Logo & Name - Side by Side */}
+            <div style={{ 
+              display: 'flex',
+              alignItems: 'center',
+              gap: '15px',
+              marginBottom: '12px'
+            }}>
+              <img 
+                src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
+                alt="Abba Homes & Properties" 
+                style={{ 
+                  height: '55px', 
+                  width: 'auto', 
+                  flexShrink: 0
+                }} 
+              />
+              
               <h4 style={{ 
                 fontSize: '1.2rem', 
-                marginBottom: '0.25rem', 
+                margin: 0, 
                 color: '#e67e22',
                 textAlign: 'left'
               }}>
                 Abba Homes & Properties
               </h4>
-              
-              <p style={{ 
-                opacity: 0.8, 
-                lineHeight: 1.4, 
-                color: '#0B1F3A',
-                fontSize: '0.9rem',
-                margin: 0,
-                textAlign: 'left'
-              }}>
-                Premier real estate agency in Homa Bay County
-              </p>
             </div>
+            
+            {/* Content Below */}
+            <p style={{ 
+              opacity: 0.8, 
+              lineHeight: 1.6, 
+              color: '#0B1F3A',
+              fontSize: '0.95rem',
+              margin: 0,
+              textAlign: 'left'
+            }}>
+              Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -88,7 +91,7 @@ const Footer = () => {
               Quick Links
             </h4>
 
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <li style={{ marginBottom: '10px' }}>
                 <Link to="/" style={{ 
                   color: 'rgba(255, 255, 255, 1)', 
@@ -151,19 +154,37 @@ const Footer = () => {
               Contact
             </h4>
 
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}>
-                +254 100 658430
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              <li style={{ 
+                marginBottom: '10px', 
+                opacity: 0.8,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px'
+              }}>
+                <FaPhone size={14} /> +254 100 658430
               </li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}>
-                info@abbahomes-properties.com
+              <li style={{ 
+                marginBottom: '10px', 
+                opacity: 0.8,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px'
+              }}>
+                <FaEnvelope size={14} /> info@abbahomes-properties.com
               </li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}>
-                Homa Bay, Kenya
+              <li style={{ 
+                marginBottom: '10px', 
+                opacity: 0.8,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px'
+              }}>
+                <FaMapMarkerAlt size={14} /> Homa Bay, Kenya
               </li>
             </ul>
 
-            {/* Facebook Link - NEW */}
+            {/* Facebook Icon Link */}
             <div style={{ marginTop: '20px' }}>
               <a 
                 href="https://facebook.com/abbahomesproperties" 
@@ -172,21 +193,26 @@ const Footer = () => {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '10px',
+                  justifyContent: 'center',
+                  width: '45px',
+                  height: '45px',
                   color: '#FFFFFF',
-                  textDecoration: 'none',
                   backgroundColor: '#1877F2',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  fontWeight: 'bold',
-                  transition: 'background-color 0.3s ease',
-                  fontSize: '0.95rem'
+                  borderRadius: '50%',
+                  transition: 'background-color 0.3s ease, transform 0.3s ease',
+                  fontSize: '1.5rem'
                 }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#145dbf'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#1877F2'}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#145dbf'
+                  e.target.style.transform = 'scale(1.1)'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = '#1877F2'
+                  e.target.style.transform = 'scale(1)'
+                }}
+                aria-label="Follow us on Facebook"
               >
-                <span style={{ fontSize: '1.2rem' }}>📘</span> 
-                Follow us on Facebook
+                <FaFacebook />
               </a>
             </div>
           </div>
