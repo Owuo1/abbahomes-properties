@@ -54,7 +54,7 @@ const Navbar = () => {
           >
             <img
               src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
-              alt="Abba Homes Properties"
+              alt="Abba Homes & Properties"
               style={{ height: '45px', width: 'auto', flexShrink: 0 }}
             />
             <Link
@@ -69,7 +69,7 @@ const Navbar = () => {
                 whiteSpace: 'nowrap'
               }}
             >
-              Abba Homes Properties
+              Abba Homes & Properties
             </Link>
           </div>
 
