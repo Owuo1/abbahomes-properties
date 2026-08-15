@@ -108,21 +108,26 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <button style={{
-            background: '#e67e22',
-            color: 'white',
-            border: 'none',
-            padding: '12px 20px',
-            borderRadius: '25px',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            width: '100%'
-          }} onClick={closeMenu}>
-            ➕ Add Listing
+           {/* Admin Button - ADD LISTING */}
+          <button
+            className="nav-admin-btn"
+            onClick={toggleAdmin}
+            style={{
+              background: '#e67e22',
+              color: 'white',
+              border: 'none',
+              padding: '12px 20px',
+              borderRadius: '25px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              width: '100%'
+            }}
+          >
+            <FaPlus /> Add Listing
           </button>
         </div>
       </nav>
