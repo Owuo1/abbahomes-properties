@@ -23,78 +23,78 @@ const Home = () => {
         }
       } else {
         // If no properties exist, use default data
-        const defaultProperties = [
-          {
-            id: '1',
-            title: 'Luxury Villa in Karen',
-            price: 'KES 45,000,000',
-            location: 'Karen, Nairobi',
-            bedrooms: 5,
-            bathrooms: 4,
-            image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600',
-            description: 'Stunning modern villa with panoramic views',
-            type: 'sale',
-            category: 'house',
-            status: 'available',
-            dateAdded: new Date().toISOString()
-          },
-          {
-            id: '2',
-            title: 'Modern Apartment in Westlands',
-            price: 'KES 120,000/month',
-            location: 'Westlands, Nairobi',
-            bedrooms: 3,
-            bathrooms: 2,
-            image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600',
-            description: 'Contemporary apartment in prime location',
-            type: 'rent',
-            category: 'apartment',
-            status: 'available',
-            dateAdded: new Date().toISOString()
-          },
-          {
-            id: '3',
-            title: 'Prime Land in Runda',
-            price: 'KES 25,000,000',
-            location: 'Runda, Nairobi',
-            bedrooms: 0,
-            bathrooms: 0,
-            image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600',
-            description: 'Prime residential land in prestigious Runda estate',
-            type: 'sale',
-            category: 'land',
-            status: 'available',
-            dateAdded: new Date().toISOString()
-          },
-          {
-            id: '4',
-            title: 'Commercial Space in CBD',
-            price: 'KES 250,000/month',
-            location: 'CBD, Nairobi',
-            bedrooms: 0,
-            bathrooms: 2,
-            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600',
-            description: 'Prime office space in the heart of Nairobi',
-            type: 'commercial',
-            category: 'commercial',
-            status: 'available',
-            dateAdded: new Date().toISOString()
-          },
-          {
-            id: '5',
-            title: 'Spacious House in Langata',
-            price: 'KES 85,000/month',
-            location: 'Langata, Nairobi',
-            bedrooms: 4,
-            bathrooms: 3,
-            image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600',
-            description: 'Spacious family home with garden in quiet neighborhood',
-            type: 'rent',
-            category: 'house',
-            status: 'available',
-            dateAdded: new Date().toISOString()
-          }
-        ]
+       const defaultProperties = [
+        {
+          id: '1',
+          title: 'Luxury Villa in Karen',
+          price: 'KES 45,000,000',
+          location: 'Karen, Nairobi',
+          bedrooms: 5,
+          bathrooms: 4,
+          image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600',
+          description: 'Stunning modern villa with panoramic views',
+          type: 'sale',
+          category: 'house',
+          status: 'available',
+          dateAdded: new Date().toISOString()
+        },
+        {
+          id: '2',
+          title: 'Modern Apartment in Westlands',
+          price: 'KES 120,000/month',
+          location: 'Westlands, Nairobi',
+          bedrooms: 3,
+          bathrooms: 2,
+          image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600',
+          description: 'Contemporary apartment in prime location',
+          type: 'rent',
+          category: 'apartment',
+          status: 'available',
+          dateAdded: new Date().toISOString()
+        },
+        {
+          id: '3',
+          title: 'Prime Land in Runda',
+          price: 'KES 25,000,000',
+          location: 'Runda, Nairobi',
+          bedrooms: 0,
+          bathrooms: 0,
+          image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600',
+          description: 'Prime residential land in prestigious Runda estate',
+          type: 'sale',
+          category: 'land',
+          status: 'available',
+          dateAdded: new Date().toISOString()
+        },
+        {
+          id: '4',
+          title: 'Commercial Space in CBD',
+          price: 'KES 250,000/month',
+          location: 'CBD, Nairobi',
+          bedrooms: 0,
+          bathrooms: 2,
+          image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600',
+          description: 'Prime office space in the heart of Nairobi',
+          type: 'commercial',
+          category: 'commercial',
+          status: 'available',
+          dateAdded: new Date().toISOString()
+        },
+        {
+          id: '5',
+          title: 'Spacious House in Langata',
+          price: 'KES 85,000/month',
+          location: 'Langata, Nairobi',
+          bedrooms: 4,
+          bathrooms: 3,
+          image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600',
+          description: 'Spacious family home with garden in quiet neighborhood',
+          type: 'rent',
+          category: 'house',
+          status: 'available',
+          dateAdded: new Date().toISOString()
+        }
+      ]
         setProperties(defaultProperties)
         setFeaturedProperties(defaultProperties.slice(0, 6))
         localStorage.setItem('abbahomes_properties', JSON.stringify(defaultProperties))
