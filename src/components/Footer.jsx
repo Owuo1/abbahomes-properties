@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer style={{
       background: '#0B1F3A',
-      color: 'brown',
+      color: 'white',
       padding: '60px 20px 30px'
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
