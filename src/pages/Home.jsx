@@ -141,7 +141,7 @@ const Home = () => {
             Find Your <span style={{ color: '#e67e22' }}>Dream Properties</span> in Homa Bay County
           </h1>
           <p style={{ fontSize: '1.2rem', opacity: 0.9, lineHeight: 1.6, marginBottom: '2rem' }}>
-            Discover premium properties across Homa Bay County. From luxury villas, modern apartments and land,
+            Discover premium properties across Homa Bay County. From modern apartments, Rentals, and land,
             we have the perfect home for you.
           </p>
           <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -181,12 +181,12 @@ const Home = () => {
       <section style={{ padding: '80px 20px', background: 'white' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', color: '#1a1a2e' }}>
-            Welcome to <span style={{ color: '#e67e22' }}>Abba Homes Properties</span>
+            Welcome to <span style={{ color: '#e67e22' }}>Abba Homes & Properties</span>
           </h2>
           <p style={{ color: '#666', maxWidth: '700px', margin: '1rem auto 2rem', lineHeight: 1.8 }}>
             We are a premier real estate agency dedicated to helping you find the perfect property
             in Homa Bay County. With years of experience and a commitment to excellence, we make your
-            property journey seamless and rewarding.
+            property journey seamless and rewarding.  At Abba Homes & Properties, we pride ourselves on transparent communication, personalized service, and a commitment to protecting your investment while maximizing your returns. Let us handle the day-to-day so you can enjoy peace of mind and long-term success.
           </p>
           <Link to="/about">
             <button style={{
