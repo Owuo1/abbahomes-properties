@@ -103,7 +103,7 @@ const Navbar = () => {
           display: isOpen ? 'flex' : 'none',
           flexDirection: 'column',
           width: '100%',
-          gap: '15px',
+          gap: '25px',
           paddingTop: '20px',
           borderTop: '2px solid rgba(74, 53, 32, 0.1)',
           marginTop: '15px'
