@@ -8,6 +8,21 @@ const Footer = () => {
       color: 'white',
       padding: '60px 20px 30px'
     }}>
+      <style>
+        {`
+          .footer-grid {
+            grid-template-columns: 1fr;
+          }
+
+          @media (min-width: 768px) {
+            .footer-grid {
+              grid-template-columns: 1.5fr 1fr 1fr;
+              gap: 60px;
+            }
+          }
+        `}
+      </style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div 
           className="footer-grid"
@@ -146,13 +161,6 @@ const Footer = () => {
 
         </div>
         
-        @media (min-width: 768px) {
-          .footer-grid {
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 60px;
-          }
-        }
-
         {/* Copyright */}
         <div style={{ 
           textAlign: 'center', 
