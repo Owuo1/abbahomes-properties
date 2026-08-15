@@ -19,7 +19,7 @@ const Footer = () => {
             {/* Logo */}
             <img 
               src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
-              alt="Abba Homes Properties" 
+              alt="Abba Homes & Properties" 
               style={{ 
                 height: '60px', 
                 width: 'auto', 
