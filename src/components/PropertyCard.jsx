@@ -30,10 +30,14 @@ const PropertyCard = ({ property }) => {
       border: '1px solid #eee',
       transition: 'transform 0.3s ease'
     }}>
+      {/* ✅ Display uploaded image (Base64) or fallback */}
       <img 
-        src={property.image} 
+        src={property.image || 'https://via.placeholder.com/600x400/eee/999?text=No+Image'} 
         alt={property.title} 
         style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+        onError={(e) => {
+          e.target.src = 'https://via.placeholder.com/600x400/eee/999?text=No+Image'
+        }}
       />
       <div style={{ padding: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
