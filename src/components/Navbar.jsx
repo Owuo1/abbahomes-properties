@@ -19,13 +19,10 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
-  // ✅ FIX: Define the toggleAdmin function correctly
   const toggleAdmin = () => {
-    // Dispatch a custom event that AdminPanel listens for
     document.dispatchEvent(new CustomEvent('toggleAdmin'))
   }
 
-  // ✅ NEW: Secret logo click handler (5 times)
   const handleLogoClick = () => {
     const newCount = clickCount + 1
     setClickCount(newCount)
@@ -33,11 +30,9 @@ const Navbar = () => {
     if (newCount >= 5) {
       setShowAdminButton(true)
       setClickCount(0)
-      // Optional: Show a notification
       alert('🔑 Admin mode activated! Click "Add Listing" to manage properties.')
     }
 
-    // Reset counter after 3 seconds of inactivity
     clearTimeout(window.logoTimer)
     window.logoTimer = setTimeout(() => setClickCount(0), 3000)
   }
@@ -55,23 +50,21 @@ const Navbar = () => {
         zIndex: 1000,
         boxShadow: '0 2px 15px rgba(74, 53, 32, 0.15)'
       }}>
-        {/* Logo + Hamburger Container */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           width: '100%'
         }}>
-          {/* Logo Section - LEFT SIDE */}
           <div
             className="logo-section"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
-              cursor: 'pointer' // ✅ NEW: Makes it clickable
+              cursor: 'pointer'
             }}
-            onClick={handleLogoClick} // ✅ NEW: Secret click handler
+            onClick={handleLogoClick}
           >
             <img
               src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
@@ -94,7 +87,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Hamburger Icon - RIGHT SIDE */}
           <div
             className="hamburger"
             onClick={toggleMenu}
@@ -107,7 +99,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Navigation Links */}
         <div style={{
           display: isOpen ? 'flex' : 'none',
           flexDirection: 'column',
@@ -136,7 +127,6 @@ const Navbar = () => {
             </Link>
           ))}
           
-          {/* ✅ CHANGED: Admin button now only shows after 5 logo clicks */}
           {showAdminButton && (
             <button
               className="nav-admin-btn"
@@ -167,7 +157,6 @@ const Navbar = () => {
       </nav>
 
       <style>{`
-        /* ✅ NEW: Animation for admin button */
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
@@ -181,9 +170,9 @@ const Navbar = () => {
           nav {
             flex-direction: row !important;
             justify-content: space-between !important;
+            flex-wrap: nowrap !important;
           }
           
-          /* ✅ FIX: Logo section stays on the left */
           .logo-section {
             flex: 0 0 auto !important;
           }
@@ -198,6 +187,7 @@ const Navbar = () => {
             margin-top: 0 !important;
             flex: 1 1 auto !important;
             justify-content: flex-end !important;
+            flex-wrap: nowrap !important;
           }
           
           .nav-links a {
@@ -205,10 +195,12 @@ const Navbar = () => {
             padding: 0 !important;
             width: auto !important;
             text-align: left !important;
+            white-space: nowrap !important;
           }
           
           .nav-links button {
             width: auto !important;
+            white-space: nowrap !important;
           }
         }
       `}</style>
