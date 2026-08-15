@@ -15,11 +15,16 @@ const Footer = () => {
             grid-template-columns: 1fr;
           }
 
-          /* Mobile & Tablet: Center all content */
+          /* Mobile & Tablet: Center all content uniformly */
           @media (max-width: 767px) {
             .footer-grid {
               justify-items: center;
               text-align: center;
+            }
+            
+            .footer-grid > div {
+              text-align: center !important;
+              max-width: 100% !important;
             }
             
             .logo-wrapper {
@@ -41,6 +46,29 @@ const Footer = () => {
             .social-wrapper {
               display: flex !important;
               justify-content: center !important;
+            }
+
+            .quick-links-title {
+              text-align: center !important;
+            }
+
+            .quick-links-list {
+              text-align: center !important;
+            }
+
+            .quick-links-list li {
+              text-align: center !important;
+            }
+
+            .contact-title {
+              text-align: center !important;
+            }
+
+            /* Make all columns same width */
+            .footer-column {
+              width: 100% !important;
+              max-width: 400px !important;
+              justify-self: center !important;
             }
           }
 
@@ -64,15 +92,18 @@ const Footer = () => {
         >
 
           {/* Logo & Brand Section */}
-          <div style={{ 
-            background: '#FFFFFF',
-            color: '#0B1F3A',
-            padding: '20px',
-            borderRadius: '8px',
-            width: '100%',
-            maxWidth: '400px',
-            justifySelf: 'center'
-          }}>
+          <div 
+            className="footer-column"
+            style={{ 
+              background: '#FFFFFF',
+              color: '#0B1F3A',
+              padding: '20px',
+              borderRadius: '8px',
+              width: '100%',
+              maxWidth: '400px',
+              justifySelf: 'center'
+            }}
+          >
             {/* Logo & Name - Side by Side */}
             <div 
               className="logo-wrapper"
@@ -123,27 +154,36 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div style={{ 
-            width: '100%',
-            maxWidth: '300px',
-            justifySelf: 'center',
-            textAlign: 'left'
-          }}>
-            <h4 style={{ 
-              fontSize: '1.2rem', 
-              marginBottom: '1rem', 
-              color: '#e67e22',
-              textAlign: 'inherit'
-            }}>
+          <div 
+            className="footer-column"
+            style={{ 
+              width: '100%',
+              maxWidth: '400px',
+              justifySelf: 'center',
+              textAlign: 'left'
+            }}
+          >
+            <h4 
+              className="quick-links-title"
+              style={{ 
+                fontSize: '1.2rem', 
+                marginBottom: '1rem', 
+                color: '#e67e22',
+                textAlign: 'inherit'
+              }}
+            >
               Quick Links
             </h4>
 
-            <ul style={{ 
-              listStyle: 'none', 
-              padding: 0, 
-              margin: 0,
-              textAlign: 'inherit'
-            }}>
+            <ul 
+              className="quick-links-list"
+              style={{ 
+                listStyle: 'none', 
+                padding: 0, 
+                margin: 0,
+                textAlign: 'inherit'
+              }}
+            >
               <li style={{ marginBottom: '10px' }}>
                 <Link to="/" style={{ 
                   color: 'rgba(255, 255, 255, 1)', 
@@ -197,18 +237,24 @@ const Footer = () => {
           </div>
 
           {/* Contact & Social */}
-          <div style={{ 
-            width: '100%',
-            maxWidth: '300px',
-            justifySelf: 'center',
-            textAlign: 'left'
-          }}>
-            <h4 style={{ 
-              fontSize: '1.2rem', 
-              marginBottom: '1rem', 
-              color: '#e67e22',
-              textAlign: 'inherit'
-            }}>
+          <div 
+            className="footer-column"
+            style={{ 
+              width: '100%',
+              maxWidth: '400px',
+              justifySelf: 'center',
+              textAlign: 'left'
+            }}
+          >
+            <h4 
+              className="contact-title"
+              style={{ 
+                fontSize: '1.2rem', 
+                marginBottom: '1rem', 
+                color: '#e67e22',
+                textAlign: 'inherit'
+              }}
+            >
               Contact
             </h4>
 
