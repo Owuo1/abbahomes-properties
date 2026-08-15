@@ -44,7 +44,7 @@ const Contact = () => {
                 }}>📞</div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', color: '#1a1a2e' }}>Phone</h4>
-                  <p style={{ color: '#666' }}>+254 100 658430</p>
+                  <p style={{ color: '#666' }}>+254 100 658430/+254703388001</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
