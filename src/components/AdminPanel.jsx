@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { FaTimes, FaLock } from 'react-icons/fa'
+import React, { useState, useEffect, useRef } from 'react'
+import { FaTimes, FaLock, FaUpload } from 'react-icons/fa'
 
 const ADMIN_PIN = '1234' // Change this to your desired PIN
 
@@ -8,13 +8,16 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [pin, setPin] = useState('')
   const [pinError, setPinError] = useState(false)
+  const [imagePreview, setImagePreview] = useState(null)
+  const fileInputRef = useRef(null)
+  
   const [formData, setFormData] = useState({
     title: '',
     price: '',
     location: '',
     bedrooms: '',
     bathrooms: '',
-    image: '',
+    image: '', // This will store the Base64 string
     description: '',
     type: 'sale',
     category: 'apartment'
@@ -26,6 +29,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
       setIsAuthenticated(false)
       setPin('')
       setPinError(false)
+      setImagePreview(null)
     }
   }, [isOpen])
 
@@ -45,13 +49,45 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  // ✅ NEW: Handle image file selection
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64String = reader.result
+        setImagePreview(base64String)
+        setFormData({ ...formData, image: base64String })
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  // ✅ NEW: Remove selected image
+  const handleRemoveImage = () => {
+    setImagePreview(null)
+    setFormData({ ...formData, image: '' })
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    
+    // ✅ Validate image is uploaded
+    if (!formData.image) {
+      alert('⚠️ Please upload an image for the property.')
+      return
+    }
+
     onAddProperty({
       ...formData,
       bedrooms: parseInt(formData.bedrooms) || 0,
       bathrooms: parseInt(formData.bathrooms) || 0,
     })
+    
+    // Reset form
     setFormData({
       title: '',
       price: '',
@@ -63,6 +99,10 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
       type: 'sale',
       category: 'apartment'
     })
+    setImagePreview(null)
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
     alert('✅ Property added successfully!')
   }
 
@@ -71,10 +111,10 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
     const handleToggle = () => {
       setIsOpen(prev => {
         if (!prev) {
-          // Opening the panel - reset auth state
           setIsAuthenticated(false)
           setPin('')
           setPinError(false)
+          setImagePreview(null)
         }
         return !prev
       })
@@ -82,17 +122,6 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
     document.addEventListener('toggleAdmin', handleToggle)
     return () => document.removeEventListener('toggleAdmin', handleToggle)
   }, [])
-
-  // Close panel when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isOpen && e.target.closest('.admin-panel') === null && e.target.closest('.nav-admin-btn') === null) {
-        // Don't auto-close on click outside to prevent accidental closure
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isOpen])
 
   return (
     <div 
@@ -129,6 +158,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
             setIsAuthenticated(false)
             setPin('')
             setPinError(false)
+            setImagePreview(null)
           }}
           style={{
             background: '#e74c3c',
@@ -350,26 +380,110 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                   }}
                 />
               </div>
+              
+              {/* ✅ CHANGED: Image Upload Section */}
               <div style={{ gridColumn: '1 / -1' }}>
                 <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '5px', color: '#333' }}>
-                  Image URL *
+                  Property Image *
                 </label>
-                <input
-                  type="url"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  required
-                  placeholder="https://images.unsplash.com/..."
-                  style={{
-                    width: '100%',
-                    padding: '12px',
-                    border: '1px solid #ddd',
-                    borderRadius: '8px',
-                    fontSize: '1rem'
-                  }}
-                />
+                <div style={{
+                  border: '2px dashed #ddd',
+                  borderRadius: '10px',
+                  padding: '20px',
+                  textAlign: 'center',
+                  background: '#fafafa',
+                  transition: 'border-color 0.3s ease'
+                }}>
+                  {!imagePreview ? (
+                    <>
+                      <FaUpload size={32} color="#999" />
+                      <p style={{ color: '#666', margin: '10px 0' }}>
+                        Click below to upload an image
+                      </p>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        style={{
+                          display: 'block',
+                          margin: '0 auto',
+                          padding: '10px',
+                          border: '1px solid #ddd',
+                          borderRadius: '5px',
+                          width: '100%',
+                          maxWidth: '300px',
+                          cursor: 'pointer'
+                        }}
+                      />
+                      <p style={{ color: '#999', fontSize: '0.8rem', marginTop: '10px' }}>
+                        Supported: JPG, PNG, WebP (Max 5MB)
+                      </p>
+                    </>
+                  ) : (
+                    <div style={{ position: 'relative', display: 'inline-block' }}>
+                      <img 
+                        src={imagePreview} 
+                        alt="Property preview"
+                        style={{
+                          maxWidth: '100%',
+                          maxHeight: '250px',
+                          borderRadius: '8px',
+                          objectFit: 'cover'
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleRemoveImage}
+                        style={{
+                          position: 'absolute',
+                          top: '-10px',
+                          right: '-10px',
+                          background: '#e74c3c',
+                          color: 'white',
+                          border: 'none',
+                          borderRadius: '50%',
+                          width: '30px',
+                          height: '30px',
+                          cursor: 'pointer',
+                          fontSize: '1rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        ×
+                      </button>
+                      <p style={{ color: '#2ecc71', fontSize: '0.85rem', marginTop: '8px' }}>
+                        ✅ Image uploaded successfully!
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setImagePreview(null)
+                          setFormData({ ...formData, image: '' })
+                          if (fileInputRef.current) {
+                            fileInputRef.current.value = ''
+                          }
+                        }}
+                        style={{
+                          background: 'transparent',
+                          color: '#e67e22',
+                          border: '1px solid #e67e22',
+                          padding: '5px 15px',
+                          borderRadius: '5px',
+                          cursor: 'pointer',
+                          fontSize: '0.85rem',
+                          marginTop: '5px'
+                        }}
+                      >
+                        Change Image
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
+
               <div style={{ gridColumn: '1 / -1' }}>
                 <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '5px', color: '#333' }}>
                   Description
@@ -431,28 +545,44 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                     marginBottom: '8px'
                   }}
                 >
-                  <div style={{ flex: 1 }}>
-                    <strong style={{ color: '#1a1a2e' }}>{prop.title}</strong>
-                    <span style={{ marginLeft: '15px', color: '#e67e22', fontWeight: 'bold' }}>
-                      {prop.price}
-                    </span>
-                    <span style={{ marginLeft: '15px', color: '#888', fontSize: '0.9rem' }}>
-                      📍 {prop.location}
-                    </span>
-                    <span style={{
-                      marginLeft: '10px',
-                      display: 'inline-block',
-                      padding: '2px 10px',
-                      borderRadius: '12px',
-                      fontSize: '0.7rem',
-                      fontWeight: 'bold',
-                      background: prop.category === 'land' ? '#2ecc71' : 
-                                   prop.category === 'apartment' ? '#3498db' : 
-                                   prop.category === 'house' ? '#9b59b6' : '#e67e22',
-                      color: 'white'
-                    }}>
-                      {prop.category}
-                    </span>
+                  <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    {/* ✅ Show thumbnail of uploaded image */}
+                    {prop.image && (
+                      <img 
+                        src={prop.image} 
+                        alt={prop.title}
+                        style={{
+                          width: '50px',
+                          height: '50px',
+                          objectFit: 'cover',
+                          borderRadius: '8px',
+                          border: '1px solid #eee'
+                        }}
+                      />
+                    )}
+                    <div>
+                      <strong style={{ color: '#1a1a2e' }}>{prop.title}</strong>
+                      <span style={{ marginLeft: '15px', color: '#e67e22', fontWeight: 'bold' }}>
+                        {prop.price}
+                      </span>
+                      <span style={{ marginLeft: '15px', color: '#888', fontSize: '0.9rem' }}>
+                        📍 {prop.location}
+                      </span>
+                      <span style={{
+                        marginLeft: '10px',
+                        display: 'inline-block',
+                        padding: '2px 10px',
+                        borderRadius: '12px',
+                        fontSize: '0.7rem',
+                        fontWeight: 'bold',
+                        background: prop.category === 'land' ? '#2ecc71' : 
+                                     prop.category === 'apartment' ? '#3498db' : 
+                                     prop.category === 'house' ? '#9b59b6' : '#e67e22',
+                        color: 'white'
+                      }}>
+                        {prop.category}
+                      </span>
+                    </div>
                   </div>
                   <button
                     onClick={() => {
