@@ -12,7 +12,7 @@ const About = () => {
         </p>
         
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
-          <div>
+          <div style={{ textAlign: 'center' }}> {/* Added textAlign: 'center' here */}
             <h3 style={{ fontSize: '2rem', color: '#1a1a2e', marginBottom: '1rem' }}>
               Your Trusted <span style={{ color: '#e67e22' }}>Real Estate Partner</span>
             </h3>
