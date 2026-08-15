@@ -302,7 +302,7 @@ const Footer = () => {
               style={{ marginTop: '20px' }}
             >
               <a 
-                href="https://facebook.com/abbahomesproperties" 
+                 href="https://www.facebook.com/AbbaHomesPropertiesKenya" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{
