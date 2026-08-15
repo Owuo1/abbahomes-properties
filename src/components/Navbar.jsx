@@ -4,6 +4,8 @@ import { FaBars, FaTimes, FaPlus } from 'react-icons/fa'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [clickCount, setClickCount] = useState(0)
+  const [showAdminButton, setShowAdminButton] = useState(false)
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -21,6 +23,23 @@ const Navbar = () => {
   const toggleAdmin = () => {
     // Dispatch a custom event that AdminPanel listens for
     document.dispatchEvent(new CustomEvent('toggleAdmin'))
+  }
+
+  // ✅ NEW: Secret logo click handler (5 times)
+  const handleLogoClick = () => {
+    const newCount = clickCount + 1
+    setClickCount(newCount)
+    
+    if (newCount >= 5) {
+      setShowAdminButton(true)
+      setClickCount(0)
+      // Optional: Show a notification
+      alert('🔑 Admin mode activated! Click "Add Listing" to manage properties.')
+    }
+    
+    // Reset counter after 3 seconds of inactivity
+    clearTimeout(window.logoTimer)
+    window.logoTimer = setTimeout(() => setClickCount(0), 3000)
   }
 
   return (
@@ -49,8 +68,10 @@ const Navbar = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '12px'
+              gap: '12px',
+              cursor: 'pointer'  // ✅ NEW: Makes it clickable
             }}
+            onClick={handleLogoClick}  // ✅ NEW: Secret click handler
           >
             <img
               src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png"
@@ -114,31 +135,44 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          {/* ✅ FIX: Use the toggleAdmin function correctly */}
-          <button
-            className="nav-admin-btn"
-            onClick={toggleAdmin}
-            style={{
-              background: '#e67e22',
-              color: 'white',
-              border: 'none',
-              padding: '12px 20px',
-              borderRadius: '25px',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              width: '100%'
-            }}
-          >
-            <FaPlus /> Add Listing
-          </button>
+          
+          {/* ✅ CHANGED: Admin button now only shows after 5 logo clicks */}
+          {showAdminButton && (
+            <button
+              className="nav-admin-btn"
+              onClick={() => {
+                toggleAdmin()
+                closeMenu()
+              }}
+              style={{
+                background: '#e67e22',
+                color: 'white',
+                border: 'none',
+                padding: '12px 20px',
+                borderRadius: '25px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                width: '100%',
+                animation: 'fadeIn 0.3s ease'
+              }}
+            >
+              <FaPlus /> Add Listing
+            </button>
+          )}
         </div>
       </nav>
 
       <style>{`
+        /* ✅ NEW: Animation for admin button */
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
         @media (min-width: 769px) {
           .hamburger {
             display: none !important;
