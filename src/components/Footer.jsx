@@ -15,7 +15,15 @@ const Footer = () => {
           gap: '40px', 
           marginBottom: '40px' 
         }}>
-          <div style={{ textAlign: 'center' }}>
+
+          {/* Logo & Brand Section */}
+          <div style={{ 
+            textAlign: 'center',
+            background: '#FFFFFF',
+            color: '#0B1F3A',
+            padding: '20px',
+            borderRadius: '8px'
+          }}>
             {/* Logo */}
             <img 
               src="https://i.ibb.co/r2fhGBwb/abba-logo-removebg-preview.png" 
@@ -41,90 +49,102 @@ const Footer = () => {
               opacity: 0.8, 
               lineHeight: 1.6, 
               maxWidth: '300px', 
-              margin: '0 auto' 
+              margin: '0 auto',
+              color: '#0B1F3A'
             }}>
               Premier real estate agency in Homa Bay County, helping you find your dream home in Kenya's capital.
             </p>
           </div>
-          {/* Quick Links - FIXED VERSION */}
+
+          {/* Quick Links */}
           <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#e67e22' }}>
+            <h4 style={{ 
+              fontSize: '1.2rem', 
+              marginBottom: '1rem', 
+              color: '#e67e22' 
+            }}>
               Quick Links
             </h4>
+
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '10px' }}>
-                <Link 
-                  to="/" 
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 1)', 
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                >
+                <Link to="/" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>
                   Home
                 </Link>
               </li>
+
               <li style={{ marginBottom: '10px' }}>
-                <Link 
-                  to="/about" 
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 1)', 
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                >
+                <Link to="/about" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>
                   About Us
                 </Link>
               </li>
+
               <li style={{ marginBottom: '10px' }}>
-                <Link 
-                  to="/services" 
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 1)', 
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                >
+                <Link to="/services" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>
                   Services
                 </Link>
               </li>
+
               <li style={{ marginBottom: '10px' }}>
-                <Link 
-                  to="/properties" 
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 1)', 
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                >
+                <Link to="/properties" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>
                   Properties
                 </Link>
               </li>
+
               <li style={{ marginBottom: '10px' }}>
-                <Link 
-                  to="/contact" 
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 1)', 
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                >
+                <Link to="/contact" style={{ 
+                  color: 'rgba(255, 255, 255, 1)', 
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>
                   Contact
                 </Link>
               </li>
             </ul>
           </div>
+
+          {/* Contact */}
           <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#e67e22' }}>
+            <h4 style={{ 
+              fontSize: '1.2rem', 
+              marginBottom: '1rem', 
+              color: '#e67e22' 
+            }}>
               Contact
             </h4>
+
             <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}> +254 100 658430</li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}> info@abbahomes-properties.com</li>
-              <li style={{ marginBottom: '10px', opacity: 0.8 }}> Homa Bay, Kenya</li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}>
+                +254 100 658430
+              </li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}>
+                info@abbahomes-properties.com
+              </li>
+              <li style={{ marginBottom: '10px', opacity: 0.8 }}>
+                Homa Bay, Kenya
+              </li>
             </ul>
           </div>
+
         </div>
+
+        {/* Copyright */}
         <div style={{ 
           textAlign: 'center', 
           paddingTop: '30px', 
@@ -134,6 +154,7 @@ const Footer = () => {
         }}>
           &copy; {new Date().getFullYear()} Abba Homes Properties Ltd. All Rights Reserved.
         </div>
+
       </div>
     </footer>
   )
