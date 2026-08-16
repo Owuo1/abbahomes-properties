@@ -2,18 +2,25 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropertyCard from '../components/PropertyCard'
 
-// ✅ FIXED: Home now receives featuredProperties as a prop
 const Home = ({ featuredProperties = [] }) => {
-  // ✅ Use the prop directly, no localStorage or state
+  // ✅ Debug logs
+  console.log('🏠 Home component rendered')
+  console.log('🏠 featuredProperties prop:', featuredProperties)
+  console.log('🏠 Number of properties:', featuredProperties?.length || 0)
+  
   const properties = featuredProperties || []
   
-  // ✅ FIXED: Case-insensitive category filtering
+  // ✅ Case-insensitive category filtering
   const landProperties = properties.filter(p => p?.category?.toLowerCase() === 'land').slice(0, 4)
   const apartmentProperties = properties.filter(p => p?.category?.toLowerCase() === 'apartment').slice(0, 4)
   const houseProperties = properties.filter(p => p?.category?.toLowerCase() === 'house').slice(0, 4)
   
-  // Check if any properties exist
+  console.log('🏠 Land properties:', landProperties)
+  console.log('🏠 Apartment properties:', apartmentProperties)
+  console.log('🏠 House properties:', houseProperties)
+  
   const hasProperties = properties.length > 0
+  console.log('🏠 Has properties:', hasProperties)
 
   return (
     <div>
