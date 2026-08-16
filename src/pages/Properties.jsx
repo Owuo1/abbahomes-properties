@@ -11,6 +11,8 @@ const Properties = ({ properties = [] }) => {
     return matchesType && matchesCategory
   })
 
+  const hasProperties = properties.length > 0
+
   return (
     <section style={{ padding: '80px 20px', background: 'white' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -21,118 +23,120 @@ const Properties = ({ properties = [] }) => {
           Find available land, rental apartments, and houses in Homa Bay County
         </p>
 
-        {/* Filters */}
-        <div style={{ 
-          display: 'flex', 
-          gap: '15px', 
-          justifyContent: 'center', 
-          marginBottom: '40px', 
-          flexWrap: 'wrap' 
-        }}>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterType === 'all' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterType === 'all' ? '#e67e22' : 'transparent',
-                color: filterType === 'all' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterType('all')}
-            >
-              All Types
-            </button>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterType === 'sale' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterType === 'sale' ? '#e67e22' : 'transparent',
-                color: filterType === 'sale' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterType('sale')}
-            >
-              For Sale
-            </button>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterType === 'rent' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterType === 'rent' ? '#e67e22' : 'transparent',
-                color: filterType === 'rent' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterType('rent')}
-            >
-              For Rent
-            </button>
+        {/* ✅ Only show filters if there are properties */}
+        {hasProperties && (
+          <div style={{ 
+            display: 'flex', 
+            gap: '15px', 
+            justifyContent: 'center', 
+            marginBottom: '40px', 
+            flexWrap: 'wrap' 
+          }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterType === 'all' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterType === 'all' ? '#e67e22' : 'transparent',
+                  color: filterType === 'all' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterType('all')}
+              >
+                All Types
+              </button>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterType === 'sale' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterType === 'sale' ? '#e67e22' : 'transparent',
+                  color: filterType === 'sale' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterType('sale')}
+              >
+                For Sale
+              </button>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterType === 'rent' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterType === 'rent' ? '#e67e22' : 'transparent',
+                  color: filterType === 'rent' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterType('rent')}
+              >
+                For Rent
+              </button>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterCategory === 'all' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterCategory === 'all' ? '#e67e22' : 'transparent',
+                  color: filterCategory === 'all' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterCategory('all')}
+              >
+                All Categories
+              </button>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterCategory === 'land' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterCategory === 'land' ? '#e67e22' : 'transparent',
+                  color: filterCategory === 'land' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterCategory('land')}
+              >
+                🌍 Land
+              </button>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterCategory === 'apartment' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterCategory === 'apartment' ? '#e67e22' : 'transparent',
+                  color: filterCategory === 'apartment' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterCategory('apartment')}
+              >
+                🏢 Apartments
+              </button>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterCategory === 'house' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterCategory === 'house' ? '#e67e22' : 'transparent',
+                  color: filterCategory === 'house' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterCategory('house')}
+              >
+                🏠 Houses
+              </button>
+            </div>
           </div>
-          
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterCategory === 'all' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterCategory === 'all' ? '#e67e22' : 'transparent',
-                color: filterCategory === 'all' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterCategory('all')}
-            >
-              All Categories
-            </button>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterCategory === 'land' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterCategory === 'land' ? '#e67e22' : 'transparent',
-                color: filterCategory === 'land' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterCategory('land')}
-            >
-              🌍 Land
-            </button>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterCategory === 'apartment' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterCategory === 'apartment' ? '#e67e22' : 'transparent',
-                color: filterCategory === 'apartment' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterCategory('apartment')}
-            >
-              🏢 Apartments
-            </button>
-            <button
-              style={{
-                padding: '10px 25px',
-                border: `2px solid ${filterCategory === 'house' ? '#e67e22' : '#e0e0e0'}`,
-                borderRadius: '25px',
-                background: filterCategory === 'house' ? '#e67e22' : 'transparent',
-                color: filterCategory === 'house' ? 'white' : '#666',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-              onClick={() => setFilterCategory('house')}
-            >
-              🏠 Houses
-            </button>
-          </div>
-        </div>
+        )}
 
         {/* Property Grid */}
         <div style={{ 
@@ -144,12 +148,20 @@ const Properties = ({ properties = [] }) => {
             filteredProperties.map(property => (
               <PropertyCard key={property.id} property={property} />
             ))
-          ) : (
+          ) : hasProperties ? (
             <p style={{ textAlign: 'center', gridColumn: '1 / -1', color: '#666', padding: '50px' }}>
               No properties found matching your criteria.
               <br />
-              <span style={{ fontSize: '0.9rem' }}>Try adjusting your filters or add a new property.</span>
+              <span style={{ fontSize: '0.9rem' }}>Try adjusting your filters.</span>
             </p>
+          ) : (
+            <div style={{ textAlign: 'center', gridColumn: '1 / -1', padding: '60px 20px' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🏠</div>
+              <h3 style={{ color: '#1a1a2e', marginBottom: '0.5rem' }}>No Properties Available</h3>
+              <p style={{ color: '#666' }}>
+                Be the first to add a property! Click <strong>"Add Listing"</strong> in the navigation menu.
+              </p>
+            </div>
           )}
         </div>
       </div>
