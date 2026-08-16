@@ -9,6 +9,8 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
   const [pin, setPin] = useState('')
   const [pinError, setPinError] = useState(false)
   const [imagePreview, setImagePreview] = useState(null)
+  const [imageFile, setImageFile] = useState(null) // ✅ Store actual file for compression
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const fileInputRef = useRef(null)
   
   const [formData, setFormData] = useState({
@@ -30,6 +32,8 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
       setPin('')
       setPinError(false)
       setImagePreview(null)
+      setImageFile(null)
+      setIsSubmitting(false)
     }
   }, [isOpen])
 
@@ -49,61 +53,112 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  // ✅ NEW: Handle image file selection
+  // ✅ Handle image file selection with validation
   const handleImageChange = (e) => {
     const file = e.target.files[0]
     if (file) {
+      // Validate file type
+      const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+      if (!validTypes.includes(file.type)) {
+        alert('⚠️ Please upload a valid image (JPG, PNG, WebP, or GIF)')
+        e.target.value = ''
+        return
+      }
+      
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('⚠️ Image is too large. Please upload an image under 5MB.')
+        e.target.value = ''
+        return
+      }
+      
+      // Store the file for compression
+      setImageFile(file)
+      
+      // Show preview
       const reader = new FileReader()
       reader.onloadend = () => {
-        const base64String = reader.result
-        setImagePreview(base64String)
-        setFormData({ ...formData, image: base64String })
+        setImagePreview(reader.result)
+        setFormData({ ...formData, image: reader.result })
       }
       reader.readAsDataURL(file)
     }
   }
 
-  // ✅ NEW: Remove selected image
+  // ✅ Remove selected image
   const handleRemoveImage = () => {
     setImagePreview(null)
+    setImageFile(null)
     setFormData({ ...formData, image: '' })
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
   }
 
-  const handleSubmit = (e) => {
+  // ✅ Handle form submission with IndexedDB support
+  const handleSubmit = async (e) => {
     e.preventDefault()
     
-    // ✅ Validate image is uploaded
-    if (!formData.image) {
+    // Validate required fields
+    if (!formData.title.trim()) {
+      alert('⚠️ Please enter a property title.')
+      return
+    }
+    if (!formData.price.trim()) {
+      alert('⚠️ Please enter a price.')
+      return
+    }
+    if (!formData.location.trim()) {
+      alert('⚠️ Please enter a location.')
+      return
+    }
+    if (!formData.image && !imageFile) {
       alert('⚠️ Please upload an image for the property.')
       return
     }
-
-    onAddProperty({
-      ...formData,
-      bedrooms: parseInt(formData.bedrooms) || 0,
-      bathrooms: parseInt(formData.bathrooms) || 0,
-    })
     
-    // Reset form
-    setFormData({
-      title: '',
-      price: '',
-      location: '',
-      bedrooms: '',
-      bathrooms: '',
-      image: '',
-      description: '',
-      type: 'sale',
-      category: 'apartment'
-    })
-    setImagePreview(null)
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''
+    // Prevent multiple submissions
+    if (isSubmitting) return
+    setIsSubmitting(true)
+    
+    try {
+      // Prepare property data
+      const propertyData = {
+        ...formData,
+        bedrooms: parseInt(formData.bedrooms) || 0,
+        bathrooms: parseInt(formData.bathrooms) || 0,
+        description: formData.description || 'No description provided'
+      }
+      
+      // Call onAddProperty with the image file for compression
+      await onAddProperty(propertyData, imageFile)
+      
+      // Reset form
+      setFormData({
+        title: '',
+        price: '',
+        location: '',
+        bedrooms: '',
+        bathrooms: '',
+        image: '',
+        description: '',
+        type: 'sale',
+        category: 'apartment'
+      })
+      setImagePreview(null)
+      setImageFile(null)
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''
+      }
+      
+      alert('✅ Property added successfully!')
+      
+    } catch (error) {
+      console.error('Add property failed:', error)
+      alert('❌ Failed to add property. Please try again.')
+    } finally {
+      setIsSubmitting(false)
     }
-    alert('✅ Property added successfully!')
   }
 
   // Listen for admin toggle from Navbar
@@ -115,6 +170,8 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
           setPin('')
           setPinError(false)
           setImagePreview(null)
+          setImageFile(null)
+          setIsSubmitting(false)
         }
         return !prev
       })
@@ -159,6 +216,8 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
             setPin('')
             setPinError(false)
             setImagePreview(null)
+            setImageFile(null)
+            setIsSubmitting(false)
           }}
           style={{
             background: '#e74c3c',
@@ -249,7 +308,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                   value={formData.title}
                   onChange={handleChange}
                   required
-                  placeholder="e.g. Luxury Villa in Karen"
+                  placeholder="e.g. Luxury Villa in Kendu Bay"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -269,7 +328,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                   value={formData.price}
                   onChange={handleChange}
                   required
-                  placeholder="e.g. KES 45,000,000"
+                  placeholder="e.g. KES 15,000,000"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -289,7 +348,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                   value={formData.location}
                   onChange={handleChange}
                   required
-                  placeholder="e.g. Karen, Nairobi"
+                  placeholder="e.g. Kendu Bay, Homa Bay County"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -352,6 +411,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                   value={formData.bedrooms}
                   onChange={handleChange}
                   placeholder="0"
+                  min="0"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -371,6 +431,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                   value={formData.bathrooms}
                   onChange={handleChange}
                   placeholder="0"
+                  min="0"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -381,18 +442,18 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                 />
               </div>
               
-              {/* ✅ CHANGED: Image Upload Section */}
+              {/* Image Upload Section */}
               <div style={{ gridColumn: '1 / -1' }}>
                 <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '5px', color: '#333' }}>
                   Property Image *
                 </label>
                 <div style={{
-                  border: '2px dashed #ddd',
+                  border: `2px dashed ${imagePreview ? '#2ecc71' : '#ddd'}`,
                   borderRadius: '10px',
                   padding: '20px',
                   textAlign: 'center',
-                  background: '#fafafa',
-                  transition: 'border-color 0.3s ease'
+                  background: imagePreview ? '#f0fff4' : '#fafafa',
+                  transition: 'border-color 0.3s ease, background 0.3s ease'
                 }}>
                   {!imagePreview ? (
                     <>
@@ -429,7 +490,8 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                           maxWidth: '100%',
                           maxHeight: '250px',
                           borderRadius: '8px',
-                          objectFit: 'cover'
+                          objectFit: 'cover',
+                          boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
                         }}
                       />
                       <button
@@ -449,7 +511,8 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                           fontSize: '1rem',
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center'
+                          justifyContent: 'center',
+                          boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
                         }}
                       >
                         ×
@@ -461,6 +524,7 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                         type="button"
                         onClick={() => {
                           setImagePreview(null)
+                          setImageFile(null)
                           setFormData({ ...formData, image: '' })
                           if (fileInputRef.current) {
                             fileInputRef.current.value = ''
@@ -474,7 +538,16 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                           borderRadius: '5px',
                           cursor: 'pointer',
                           fontSize: '0.85rem',
-                          marginTop: '5px'
+                          marginTop: '5px',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.background = '#e67e22'
+                          e.target.style.color = 'white'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.background = 'transparent'
+                          e.target.style.color = '#e67e22'
                         }}
                       >
                         Change Image
@@ -500,26 +573,31 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
                     border: '1px solid #ddd',
                     borderRadius: '8px',
                     fontSize: '1rem',
-                    resize: 'vertical'
+                    resize: 'vertical',
+                    fontFamily: 'inherit'
                   }}
                 />
               </div>
+              
               <div style={{ gridColumn: '1 / -1' }}>
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   style={{
                     width: '100%',
-                    background: '#e67e22',
+                    background: isSubmitting ? '#ccc' : '#e67e22',
                     color: 'white',
                     border: 'none',
                     padding: '14px',
                     borderRadius: '10px',
                     fontSize: '1rem',
                     fontWeight: 'bold',
-                    cursor: 'pointer'
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    transition: 'background 0.3s ease',
+                    opacity: isSubmitting ? 0.7 : 1
                   }}
                 >
-                  ➕ Add Property
+                  {isSubmitting ? '⏳ Adding Property...' : '➕ Add Property'}
                 </button>
               </div>
             </div>
@@ -531,79 +609,99 @@ const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
               Current Properties ({properties.length})
             </h3>
             <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
-              {properties.map(prop => (
-                <div
-                  key={prop.id}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '12px 15px',
-                    borderBottom: '1px solid #eee',
-                    background: '#f8f9fa',
-                    borderRadius: '8px',
-                    marginBottom: '8px'
-                  }}
-                >
-                  <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    {/* ✅ Show thumbnail of uploaded image */}
-                    {prop.image && (
-                      <img 
-                        src={prop.image} 
-                        alt={prop.title}
-                        style={{
-                          width: '50px',
-                          height: '50px',
-                          objectFit: 'cover',
-                          borderRadius: '8px',
-                          border: '1px solid #eee'
-                        }}
-                      />
-                    )}
-                    <div>
-                      <strong style={{ color: '#1a1a2e' }}>{prop.title}</strong>
-                      <span style={{ marginLeft: '15px', color: '#e67e22', fontWeight: 'bold' }}>
-                        {prop.price}
-                      </span>
-                      <span style={{ marginLeft: '15px', color: '#888', fontSize: '0.9rem' }}>
-                        📍 {prop.location}
-                      </span>
-                      <span style={{
-                        marginLeft: '10px',
-                        display: 'inline-block',
-                        padding: '2px 10px',
-                        borderRadius: '12px',
-                        fontSize: '0.7rem',
-                        fontWeight: 'bold',
-                        background: prop.category === 'land' ? '#2ecc71' : 
-                                     prop.category === 'apartment' ? '#3498db' : 
-                                     prop.category === 'house' ? '#9b59b6' : '#e67e22',
-                        color: 'white'
-                      }}>
-                        {prop.category}
-                      </span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => {
-                      if (window.confirm(`Delete "${prop.title}"?`)) {
-                        onDeleteProperty(prop.id)
-                      }
-                    }}
+              {properties.length === 0 ? (
+                <p style={{ color: '#999', textAlign: 'center', padding: '20px' }}>
+                  No properties added yet. Start by adding one above!
+                </p>
+              ) : (
+                properties.map(prop => (
+                  <div
+                    key={prop.id}
                     style={{
-                      background: '#e74c3c',
-                      color: 'white',
-                      border: 'none',
-                      padding: '6px 14px',
-                      borderRadius: '5px',
-                      cursor: 'pointer',
-                      fontSize: '0.9rem'
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '12px 15px',
+                      borderBottom: '1px solid #eee',
+                      background: '#f8f9fa',
+                      borderRadius: '8px',
+                      marginBottom: '8px',
+                      transition: 'background 0.2s ease'
                     }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = '#f0f0f0'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = '#f8f9fa'}
                   >
-                    Delete
-                  </button>
-                </div>
-              ))}
+                    <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
+                      {prop.image && (
+                        <img 
+                          src={prop.image} 
+                          alt={prop.title}
+                          style={{
+                            width: '50px',
+                            height: '50px',
+                            objectFit: 'cover',
+                            borderRadius: '8px',
+                            border: '1px solid #eee',
+                            flexShrink: 0
+                          }}
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/50x50/eee/999?text=No+Image'
+                          }}
+                        />
+                      )}
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <strong style={{ color: '#1a1a2e', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {prop.title}
+                        </strong>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+                          <span style={{ color: '#e67e22', fontWeight: 'bold', fontSize: '0.9rem' }}>
+                            {prop.price}
+                          </span>
+                          <span style={{ color: '#888', fontSize: '0.8rem' }}>
+                            📍 {prop.location}
+                          </span>
+                          <span style={{
+                            display: 'inline-block',
+                            padding: '2px 10px',
+                            borderRadius: '12px',
+                            fontSize: '0.65rem',
+                            fontWeight: 'bold',
+                            background: prop.category === 'land' ? '#2ecc71' : 
+                                         prop.category === 'apartment' ? '#3498db' : 
+                                         prop.category === 'house' ? '#9b59b6' : '#e67e22',
+                            color: 'white',
+                            textTransform: 'capitalize'
+                          }}>
+                            {prop.category}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        if (window.confirm(`Are you sure you want to delete "${prop.title}"?`)) {
+                          onDeleteProperty(prop.id)
+                        }
+                      }}
+                      style={{
+                        background: '#e74c3c',
+                        color: 'white',
+                        border: 'none',
+                        padding: '6px 14px',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                        fontSize: '0.85rem',
+                        transition: 'background 0.2s ease',
+                        flexShrink: 0
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = '#c0392b'}
+                      onMouseLeave={(e) => e.target.style.background = '#e74c3c'}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </>
