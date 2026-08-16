@@ -26,15 +26,15 @@ const Home = () => {
        const defaultProperties = [
         {
           id: '1',
-          title: 'Luxury Villa in Karen',
-          price: 'KES 45,000,000',
-          location: 'Karen, Nairobi',
-          bedrooms: 5,
-          bathrooms: 4,
+          title: 'Singles and Doubles in Rodi',
+          price: 'KES 4,500',
+          location: 'Rodi Kopany, Homa Bay County',
+          bedrooms: 0,
+          bathrooms: 0,
           image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600',
           description: 'Stunning modern villa with panoramic views',
-          type: 'sale',
-          category: 'house',
+          type: 'Rent',
+          category: 'Apartment',
           status: 'available',
           dateAdded: new Date().toISOString()
         },
