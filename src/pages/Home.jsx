@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropertyCard from '../components/PropertyCard'
 
-// ✅ Home receives featuredProperties as a prop
+// ✅ FIXED: Home now receives featuredProperties as a prop
 const Home = ({ featuredProperties = [] }) => {
-  // ✅ Use the prop directly
+  // ✅ Use the prop directly, no localStorage or state
   const properties = featuredProperties || []
   
-  // Separate properties by category
+  // Separate properties by category (using the received prop)
   const landProperties = properties.filter(p => p?.category === 'land').slice(0, 4)
   const apartmentProperties = properties.filter(p => p?.category === 'apartment').slice(0, 4)
   const houseProperties = properties.filter(p => p?.category === 'house').slice(0, 4)
@@ -74,7 +74,7 @@ const Home = ({ featuredProperties = [] }) => {
           <p style={{ color: '#666', maxWidth: '700px', margin: '1rem auto 2rem', lineHeight: 1.8 }}>
             We are a premier real estate agency dedicated to helping you find the perfect property
             in Homa Bay County. With years of experience and a commitment to excellence, we make your
-            property journey seamless and rewarding. At Abba Homes & Properties, we pride ourselves on transparent communication, personalized service, and a commitment to protecting your investment while maximizing your returns. Let us handle the day-to-day so you can enjoy peace of mind and long-term success.
+            property journey seamless and rewarding.  At Abba Homes & Properties, we pride ourselves on transparent communication, personalized service, and a commitment to protecting your investment while maximizing your returns. Let us handle the day-to-day so you can enjoy peace of mind and long-term success.
           </p>
           <Link to="/about">
             <button style={{
@@ -213,29 +213,17 @@ const Home = ({ featuredProperties = [] }) => {
         </section>
       )}
 
-      {/* ✅ Empty State - Always shown when no properties exist */}
+      {/* Empty State - If no properties exist */}
       {!hasProperties && (
-        <section style={{ padding: '80px 20px', background: 'white', textAlign: 'center' }}>
-          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🏠</div>
-            <h3 style={{ color: '#1a1a2e', fontSize: '2rem', marginBottom: '1rem' }}>
-              No Properties Available Yet
-            </h3>
-            <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: 1.8 }}>
-              Be the first to list a property! Click the <strong>"Add Listing"</strong> button 
-              in the navigation menu to get started.
+        <section style={{ padding: '60px 20px', background: 'white', textAlign: 'center' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <h3 style={{ color: '#1a1a2e' }}>No Properties Available Yet</h3>
+            <p style={{ color: '#666', marginTop: '1rem' }}>
+              Check back soon for available land, apartments, and houses in Homa Bay County.
             </p>
-            <div style={{ 
-              display: 'inline-block',
-              background: '#f8f9fa',
-              padding: '20px 30px',
-              borderRadius: '10px',
-              border: '1px dashed #e67e22'
-            }}>
-              <p style={{ color: '#999', fontSize: '0.9rem', margin: 0 }}>
-                🔑 Admin: Click the logo 5 times → Enter PIN <strong>1234</strong> → Add your first property
-              </p>
-            </div>
+            <p style={{ color: '#999', fontSize: '0.9rem', marginTop: '1rem' }}>
+              Admin: Click "Add Listing" to start adding properties.
+            </p>
           </div>
         </section>
       )}
