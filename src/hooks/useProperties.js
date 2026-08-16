@@ -7,8 +7,23 @@ import {
   isIndexedDBAvailable
 } from '../utils/storage'
 
-// ✅ NO HARDCODED PROPERTIES - Start with empty array
-const EMPTY_PROPERTIES = []
+// ✅ TEMPORARY: Add a default property for testing
+const DEFAULT_PROPERTIES = [
+  {
+    id: 'default-1',
+    title: 'Test Property - Delete Me',
+    price: 'KES 10,000',
+    location: 'Homa Bay Town, Homa Bay County',
+    bedrooms: 2,
+    bathrooms: 1,
+    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600',
+    description: 'This is a test property to verify the system is working.',
+    type: 'rent',
+    category: 'apartment',
+    status: 'available',
+    dateAdded: new Date().toISOString()
+  }
+]
 
 // Image compression utility
 const compressImage = (file, maxWidth = 800, maxHeight = 600, quality = 0.7) => {
@@ -55,31 +70,39 @@ export const useProperties = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
+        console.log('🔍 Starting to load properties...')
+        
         // Check if IndexedDB is available
         const dbAvailable = isIndexedDBAvailable()
         setIsDBReady(dbAvailable)
+        console.log('🔍 IndexedDB available:', dbAvailable)
         
         // Try to load from IndexedDB
         let data = await loadProperties()
+        console.log('🔍 Data loaded from IndexedDB:', data)
         
-        // ✅ If no data, start with empty array (no defaults!)
+        // ✅ If no data, add a default test property
         if (!data || data.length === 0) {
-          data = EMPTY_PROPERTIES
+          console.log('🔍 No data found, adding test property...')
+          data = DEFAULT_PROPERTIES
           await saveProperties(data)
+          console.log('🔍 Test property saved!')
         }
         
         setProperties(data)
+        console.log('🔍 Properties set in state:', data)
         
         // Get storage info
         const info = await getStorageInfo()
         setStorageInfo(info)
         
       } catch (error) {
-        console.error('Failed to load properties:', error)
-        // ✅ Fallback to empty array
-        setProperties(EMPTY_PROPERTIES)
+        console.error('❌ Failed to load properties:', error)
+        // ✅ Fallback to default
+        setProperties(DEFAULT_PROPERTIES)
       }
       setIsLoading(false)
+      console.log('🔍 Loading complete, properties:', properties)
     }
     
     loadData()
@@ -88,28 +111,34 @@ export const useProperties = () => {
   // Save properties to IndexedDB
   const savePropertiesToDB = async (newProperties) => {
     try {
+      console.log('💾 Saving properties to IndexedDB:', newProperties)
       await saveProperties(newProperties)
       setProperties(newProperties)
+      console.log('💾 Properties saved successfully!')
       
       // Update storage info
       const info = await getStorageInfo()
       setStorageInfo(info)
       
     } catch (error) {
-      console.error('Failed to save properties:', error)
+      console.error('❌ Failed to save properties:', error)
       alert('❌ Failed to save properties. Please try again.')
     }
   }
 
   // Add a new property
   const addProperty = async (propertyData, imageFile = null) => {
+    console.log('➕ Adding new property...', propertyData)
+    
     let image = propertyData.image || ''
     
     if (imageFile) {
       try {
+        console.log('📸 Compressing image...')
         image = await compressImage(imageFile, 800, 600, 0.7)
+        console.log('📸 Image compressed successfully')
       } catch (error) {
-        console.error('Image compression failed:', error)
+        console.error('❌ Image compression failed:', error)
         image = propertyData.image || ''
       }
     }
@@ -122,22 +151,28 @@ export const useProperties = () => {
       status: 'available'
     }
     
+    console.log('➕ New property object:', newProperty)
+    
     const updated = [...properties, newProperty]
     await savePropertiesToDB(updated)
+    console.log('➕ Property added successfully! Total properties:', updated.length)
     return newProperty
   }
 
   // Delete a property
   const deleteProperty = async (id) => {
     try {
+      console.log('🗑️ Deleting property:', id)
       await deleteFromDB(id)
       const updated = properties.filter(p => p.id !== id)
       setProperties(updated)
+      console.log('🗑️ Property deleted. Remaining:', updated.length)
+      
       // Update storage info
       const info = await getStorageInfo()
       setStorageInfo(info)
     } catch (error) {
-      console.error('Failed to delete property:', error)
+      console.error('❌ Failed to delete property:', error)
       alert('❌ Failed to delete property. Please try again.')
     }
   }
@@ -169,7 +204,10 @@ export const useProperties = () => {
 
   // Get featured properties (first 3 for homepage)
   const getFeatured = () => {
-    return properties.slice(0, 3)
+    console.log('📊 getFeatured called, properties:', properties)
+    const featured = properties.slice(0, 3)
+    console.log('📊 Featured properties:', featured)
+    return featured
   }
 
   // Get storage info
