@@ -7,93 +7,8 @@ import {
   isIndexedDBAvailable
 } from '../utils/storage'
 
-// Default properties (seed data) - Focused on Homa Bay County
-const defaultProperties = [
-  {
-    id: '1',
-    title: 'Luxury Villa in Kendu Bay',
-    price: 'KES 15,000,000',
-    location: 'Kendu Bay, Homa Bay County',
-    bedrooms: 4,
-    bathrooms: 3,
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600',
-    description: 'Stunning modern villa with panoramic views of Lake Victoria',
-    type: 'sale',
-    category: 'house',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  },
-  {
-    id: '2',
-    title: 'Modern Apartment in Homa Bay Town',
-    price: 'KES 35,000/month',
-    location: 'Homa Bay Town, Homa Bay County',
-    bedrooms: 2,
-    bathrooms: 2,
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600',
-    description: 'Contemporary apartment in prime location near the lake',
-    type: 'rent',
-    category: 'apartment',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  },
-  {
-    id: '3',
-    title: 'Prime Land in Mbita',
-    price: 'KES 8,000,000',
-    location: 'Mbita, Homa Bay County',
-    bedrooms: 0,
-    bathrooms: 0,
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600',
-    description: 'Prime residential land with stunning lake views',
-    type: 'sale',
-    category: 'land',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  },
-  {
-    id: '4',
-    title: 'Commercial Space in Homa Bay CBD',
-    price: 'KES 80,000/month',
-    location: 'Homa Bay Town, Homa Bay County',
-    bedrooms: 0,
-    bathrooms: 2,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600',
-    description: 'Prime commercial space in the heart of Homa Bay Town',
-    type: 'commercial',
-    category: 'commercial',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  },
-  {
-    id: '5',
-    title: 'Spacious House in Oyugis',
-    price: 'KES 25,000/month',
-    location: 'Oyugis, Homa Bay County',
-    bedrooms: 3,
-    bathrooms: 2,
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600',
-    description: 'Spacious family home in a quiet neighborhood',
-    type: 'rent',
-    category: 'house',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  },
-  {
-    id: '6',
-    title: 'Beachfront Land in Sindo',
-    price: 'KES 12,000,000',
-    location: 'Sindo, Homa Bay County',
-    bedrooms: 0,
-    bathrooms: 0,
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600',
-    description: 'Prime beachfront land with direct Lake Victoria access',
-    type: 'sale',
-    category: 'land',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  }
-]
+// ✅ NO HARDCODED PROPERTIES - Start with empty array
+const EMPTY_PROPERTIES = []
 
 // Image compression utility
 const compressImage = (file, maxWidth = 800, maxHeight = 600, quality = 0.7) => {
@@ -147,9 +62,9 @@ export const useProperties = () => {
         // Try to load from IndexedDB
         let data = await loadProperties()
         
-        // If no data, use defaults
+        // ✅ If no data, start with empty array (no defaults!)
         if (!data || data.length === 0) {
-          data = defaultProperties
+          data = EMPTY_PROPERTIES
           await saveProperties(data)
         }
         
@@ -161,8 +76,8 @@ export const useProperties = () => {
         
       } catch (error) {
         console.error('Failed to load properties:', error)
-        // Fallback to default
-        setProperties(defaultProperties)
+        // ✅ Fallback to empty array
+        setProperties(EMPTY_PROPERTIES)
       }
       setIsLoading(false)
     }
