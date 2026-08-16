@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropertyCard from '../components/PropertyCard'
 
-const Properties = ({ properties }) => {
+const Properties = ({ properties = [] }) => {
   const [filterType, setFilterType] = useState('all')
   const [filterCategory, setFilterCategory] = useState('all')
 
@@ -18,7 +18,7 @@ const Properties = ({ properties }) => {
           Property <span style={{ color: '#e67e22' }}>Search</span>
         </h2>
         <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
-          Find available land, rental apartments, and houses in Nairobi
+          Find available land, rental apartments, and houses in Homa Bay County
         </p>
 
         {/* Filters */}
