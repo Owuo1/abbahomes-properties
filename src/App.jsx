@@ -15,10 +15,27 @@ import './App.css'
 function App() {
   const {
     properties,
+    isLoading,
     addProperty,
     deleteProperty,
     getFeatured
   } = useProperties()
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '1.2rem',
+        color: '#666'
+      }}>
+        Loading properties...
+      </div>
+    )
+  }
 
   return (
     <div className="app">
