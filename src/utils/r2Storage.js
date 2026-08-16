@@ -18,12 +18,27 @@ const r2Client = new S3Client({
   },
 })
 
-// Upload image to R2
+// ✅ Convert base64 to Uint8Array (browser-compatible)
+const base64ToUint8Array = (base64) => {
+  // Remove data:image/jpeg;base64, prefix if present
+  const base64String = base64.split(',')[1] || base64
+  
+  // Decode base64 to binary string
+  const binaryString = atob(base64String)
+  
+  // Convert to Uint8Array
+  const bytes = new Uint8Array(binaryString.length)
+  for (let i = 0; i < binaryString.length; i++) {
+    bytes[i] = binaryString.charCodeAt(i)
+  }
+  return bytes
+}
+
+// ✅ Upload image to R2 (browser-compatible)
 export const uploadToR2 = async (base64Image, fileName) => {
   try {
-    // Remove data:image/jpeg;base64, prefix
-    const base64Data = base64Image.split(',')[1]
-    const buffer = Buffer.from(base64Data, 'base64')
+    // Convert base64 to Uint8Array
+    const imageData = base64ToUint8Array(base64Image)
     
     // Generate a unique file name
     const timestamp = Date.now()
@@ -33,7 +48,7 @@ export const uploadToR2 = async (base64Image, fileName) => {
     const command = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: key,
-      Body: buffer,
+      Body: imageData, // ✅ Now using Uint8Array instead of Buffer
       ContentType: 'image/jpeg',
       CacheControl: 'public, max-age=31536000',
     })
@@ -48,7 +63,7 @@ export const uploadToR2 = async (base64Image, fileName) => {
   }
 }
 
-// Delete image from R2
+// ✅ Delete image from R2
 export const deleteFromR2 = async (imageUrl) => {
   try {
     const key = imageUrl.split(`${PUBLIC_URL}/`)[1]
@@ -64,7 +79,7 @@ export const deleteFromR2 = async (imageUrl) => {
   }
 }
 
-// Test connection
+// ✅ Test connection
 export const testR2Connection = async () => {
   try {
     const command = new ListObjectsV2Command({
@@ -79,24 +94,8 @@ export const testR2Connection = async () => {
   }
 }
 
-// Get all images from R2 (for admin)
-export const listAllImages = async () => {
-  try {
-    const command = new ListObjectsV2Command({
-      Bucket: BUCKET_NAME,
-      Prefix: 'properties/',
-    })
-    const response = await r2Client.send(command)
-    return response.Contents || []
-  } catch (error) {
-    console.error('Failed to list images:', error)
-    return []
-  }
-}
-
 export default {
   uploadToR2,
   deleteFromR2,
-  testR2Connection,
-  listAllImages
+  testR2Connection
 }
