@@ -4,7 +4,7 @@ import { S3Client, PutObjectCommand, DeleteObjectCommand, ListObjectsV2Command }
 // ✅ Your R2 configuration
 const ACCOUNT_ID = 'a80f064c273702ebfd80a872ede1ef2e'
 const ACCESS_KEY_ID = '4209fa4765e643879c4c02a466b45272'
-const SECRET_ACCESS_KEY = 'YOUR_SECRET_ACCESS_KEY' // ⚠️ YOU MUST ADD THIS!
+const SECRET_ACCESS_KEY = '12ea1b014a746bff18dd74e706ffe8799a1dd68ac372dd24e5a6fe92dfc32865' // ⚠️ YOU MUST ADD THIS!
 const BUCKET_NAME = 'abbahomes-properties'
 const PUBLIC_URL = 'https://pub-991ab861d8204032a361de56a8bdf026.r2.dev'
 
