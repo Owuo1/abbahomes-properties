@@ -7,10 +7,10 @@ const Home = ({ featuredProperties = [] }) => {
   // ✅ Use the prop directly, no localStorage or state
   const properties = featuredProperties || []
   
-  // Separate properties by category (using the received prop)
-  const landProperties = properties.filter(p => p?.category === 'land').slice(0, 4)
-  const apartmentProperties = properties.filter(p => p?.category === 'apartment').slice(0, 4)
-  const houseProperties = properties.filter(p => p?.category === 'house').slice(0, 4)
+  // ✅ FIXED: Case-insensitive category filtering
+  const landProperties = properties.filter(p => p?.category?.toLowerCase() === 'land').slice(0, 4)
+  const apartmentProperties = properties.filter(p => p?.category?.toLowerCase() === 'apartment').slice(0, 4)
+  const houseProperties = properties.filter(p => p?.category?.toLowerCase() === 'house').slice(0, 4)
   
   // Check if any properties exist
   const hasProperties = properties.length > 0
@@ -74,7 +74,7 @@ const Home = ({ featuredProperties = [] }) => {
           <p style={{ color: '#666', maxWidth: '700px', margin: '1rem auto 2rem', lineHeight: 1.8 }}>
             We are a premier real estate agency dedicated to helping you find the perfect property
             in Homa Bay County. With years of experience and a commitment to excellence, we make your
-            property journey seamless and rewarding.  At Abba Homes & Properties, we pride ourselves on transparent communication, personalized service, and a commitment to protecting your investment while maximizing your returns. Let us handle the day-to-day so you can enjoy peace of mind and long-term success.
+            property journey seamless and rewarding. At Abba Homes & Properties, we pride ourselves on transparent communication, personalized service, and a commitment to protecting your investment while maximizing your returns. Let us handle the day-to-day so you can enjoy peace of mind and long-term success.
           </p>
           <Link to="/about">
             <button style={{
