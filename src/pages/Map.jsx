@@ -176,7 +176,7 @@ const Map = () => {
             textAlign: 'center',
             marginBottom: '1rem'
           }}>
-            🚀 Investment <span style={{ color: '#e67e22' }}>Opportunities</span>
+            Investment <span style={{ color: '#e67e22' }}>Opportunities</span>
           </h2>
           <p style={{ 
             textAlign: 'center',
