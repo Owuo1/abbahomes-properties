@@ -33,7 +33,7 @@ const Map = () => {
       title: 'Rapid Urbanization',
       description: 'Homa Bay Town is experiencing unprecedented growth with new roads, modern buildings, and expanding infrastructure. Property values have appreciated 200-300% in the last 5 years, making it a prime investment destination for early movers.',
       color: '#e67e22',
-      image: 'https://i.ibb.co/4RZvtscF/urban.jpg',
+      image: 'https://i.ibb.co/PZ6jJGsy/Urb.jpg',
       imageAlt: 'Modern city development'
     },
     {
@@ -41,7 +41,7 @@ const Map = () => {
       title: 'Educational Hub',
       description: 'Home to Tom Mboya University, several teacher training colleges, and numerous secondary schools. The student population creates consistent demand for rental housing, boarding facilities, and commercial spaces.',
       color: '#8e44ad',
-      image: 'https://i.ibb.co/RRwwzQ6/University.jpg',
+      image: 'https://i.ibb.co/kV6yxLWV/Edu.jpg',
       imageAlt: 'University campus'
     },
     {
@@ -57,7 +57,7 @@ const Map = () => {
       title: 'Improving Infrastructure',
       description: 'The county is benefiting from national government investments in roads (Kisumu-Homa Bay highway), electricity extension, and water projects. These developments are making once-remote areas accessible and valuable.',
       color: '#2980b9',
-      image: 'https://i.ibb.co/KpVbk5qD/inf.jpg',
+      image: 'https://i.ibb.co/Qgb8Vbj/infra.jpg',
       imageAlt: 'Modern highway infrastructure'
     },
     {
