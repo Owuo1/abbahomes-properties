@@ -33,7 +33,7 @@ const Map = () => {
       title: 'Rapid Urbanization',
       description: 'Homa Bay Town is experiencing unprecedented growth with new roads, modern buildings, and expanding infrastructure. Property values have appreciated 200-300% in the last 5 years, making it a prime investment destination for early movers.',
       color: '#e67e22',
-      image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600',
+      image: 'https://i.ibb.co/4RZvtscF/urban.jpg',
       imageAlt: 'Modern city development'
     },
     {
@@ -41,7 +41,7 @@ const Map = () => {
       title: 'Educational Hub',
       description: 'Home to Tom Mboya University, several teacher training colleges, and numerous secondary schools. The student population creates consistent demand for rental housing, boarding facilities, and commercial spaces.',
       color: '#8e44ad',
-      image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600',
+      image: 'https://i.ibb.co/RRwwzQ6/University.jpg',
       imageAlt: 'University campus'
     },
     {
