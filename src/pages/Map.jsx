@@ -49,7 +49,7 @@ const Map = () => {
       title: 'Growing Healthcare Sector',
       description: 'With the expansion of Homa Bay County Referral Hospital and emerging private healthcare facilities, there is a growing demand for medical-related real estate including clinics, pharmacies, and staff housing.',
       color: '#27ae60',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600',
+      image: 'https://i.ibb.co/GQrcVLLP/RRwwzQ6.jpg',
       imageAlt: 'Modern hospital building'
     },
     {
@@ -57,7 +57,7 @@ const Map = () => {
       title: 'Improving Infrastructure',
       description: 'The county is benefiting from national government investments in roads (Kisumu-Homa Bay highway), electricity extension, and water projects. These developments are making once-remote areas accessible and valuable.',
       color: '#2980b9',
-      image: 'https://images.unsplash.com/photo-1570641963307-e4a8fe54d5b5?w=600',
+      image: 'https://i.ibb.co/KpVbk5qD/inf.jpg',
       imageAlt: 'Modern highway infrastructure'
     },
     {
@@ -65,7 +65,7 @@ const Map = () => {
       title: 'Untapped Agricultural Potential',
       description: 'Rich volcanic soils and favorable climate make Homa Bay ideal for farming. This attracts agri-business investors who need storage facilities, processing plants, and worker accommodation — creating diverse real estate opportunities.',
       color: '#2ecc71',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600',
+      image: 'https://i.ibb.co/ymKdmsQt/agric.jpg',
       imageAlt: 'Agricultural landscape'
     }
   ]
