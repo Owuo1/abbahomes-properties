@@ -24,37 +24,49 @@ const Map = () => {
       icon: <FaWater size={40} />,
       title: 'Lake Victoria Frontage',
       description: 'Homa Bay County boasts prime shoreline along Lake Victoria, the largest lake in Africa. This offers unparalleled opportunities for beachfront properties, resorts, and tourism-related investments that are scarce elsewhere in Kenya.',
-      color: '#1a5276'
+      color: '#1a5276',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600',
+      imageAlt: 'Lake Victoria shoreline'
     },
     {
       icon: <FaChartLine size={40} />,
       title: 'Rapid Urbanization',
       description: 'Homa Bay Town is experiencing unprecedented growth with new roads, modern buildings, and expanding infrastructure. Property values have appreciated 200-300% in the last 5 years, making it a prime investment destination for early movers.',
-      color: '#e67e22'
+      color: '#e67e22',
+      image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600',
+      imageAlt: 'Modern city development'
     },
     {
       icon: <FaUniversity size={40} />,
       title: 'Educational Hub',
       description: 'Home to Tom Mboya University, several teacher training colleges, and numerous secondary schools. The student population creates consistent demand for rental housing, boarding facilities, and commercial spaces.',
-      color: '#8e44ad'
+      color: '#8e44ad',
+      image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600',
+      imageAlt: 'University campus'
     },
     {
       icon: <FaHospital size={40} />,
       title: 'Growing Healthcare Sector',
       description: 'With the expansion of Homa Bay County Referral Hospital and emerging private healthcare facilities, there is a growing demand for medical-related real estate including clinics, pharmacies, and staff housing.',
-      color: '#27ae60'
+      color: '#27ae60',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600',
+      imageAlt: 'Modern hospital building'
     },
     {
       icon: <FaRoad size={40} />,
       title: 'Improving Infrastructure',
       description: 'The county is benefiting from national government investments in roads (Kisumu-Homa Bay highway), electricity extension, and water projects. These developments are making once-remote areas accessible and valuable.',
-      color: '#2980b9'
+      color: '#2980b9',
+      image: 'https://images.unsplash.com/photo-1570641963307-e4a8fe54d5b5?w=600',
+      imageAlt: 'Modern highway infrastructure'
     },
     {
       icon: <FaTree size={40} />,
       title: 'Untapped Agricultural Potential',
       description: 'Rich volcanic soils and favorable climate make Homa Bay ideal for farming. This attracts agri-business investors who need storage facilities, processing plants, and worker accommodation — creating diverse real estate opportunities.',
-      color: '#2ecc71'
+      color: '#2ecc71',
+      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600',
+      imageAlt: 'Agricultural landscape'
     }
   ]
 
@@ -113,7 +125,7 @@ const Map = () => {
           </p>
         </div>
 
-        {/* Reasons Grid */}
+        {/* Reasons Grid with Images */}
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', 
@@ -124,41 +136,91 @@ const Map = () => {
             <div 
               key={index}
               style={{
-                background: '#f8f9fa',
-                padding: '30px',
+                background: '#ffffff',
                 borderRadius: '15px',
+                overflow: 'hidden',
                 borderTop: `6px solid ${reason.color}`,
+                boxShadow: '0 5px 20px rgba(0,0,0,0.05)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)'
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.1)'
+                e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
+                e.currentTarget.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)'
               }}
             >
-              <div style={{ 
-                color: reason.color,
-                marginBottom: '15px'
+              {/* Image */}
+              <div style={{
+                width: '100%',
+                height: '220px',
+                overflow: 'hidden',
+                position: 'relative'
               }}>
-                {reason.icon}
+                <img 
+                  src={reason.image} 
+                  alt={reason.imageAlt}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.5s ease'
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '60px',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  left: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}>
+                  <div style={{ 
+                    color: 'white',
+                    fontSize: '1.5rem',
+                    background: 'rgba(0,0,0,0.3)',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    {reason.icon}
+                  </div>
+                  <h3 style={{ 
+                    color: 'white',
+                    fontSize: '1.2rem',
+                    margin: 0,
+                    textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+                  }}>
+                    {reason.title}
+                  </h3>
+                </div>
               </div>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                color: '#1a1a2e',
-                marginBottom: '10px'
-              }}>
-                {reason.title}
-              </h3>
-              <p style={{ 
-                color: '#555',
-                lineHeight: 1.7,
-                fontSize: '1rem'
-              }}>
-                {reason.description}
-              </p>
+
+              {/* Content */}
+              <div style={{ padding: '20px' }}>
+                <p style={{ 
+                  color: '#555',
+                  lineHeight: 1.7,
+                  fontSize: '0.95rem',
+                  margin: 0
+                }}>
+                  {reason.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -176,7 +238,7 @@ const Map = () => {
             textAlign: 'center',
             marginBottom: '1rem'
           }}>
-            Investment <span style={{ color: '#e67e22' }}>Opportunities</span>
+            🚀 Investment <span style={{ color: '#e67e22' }}>Opportunities</span>
           </h2>
           <p style={{ 
             textAlign: 'center',
