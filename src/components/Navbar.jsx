@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Properties', path: '/properties' },
+    { name: 'Why Homa Bay', path: '/map' },
     { name: 'Contact', path: '/contact' }
   ]
 
