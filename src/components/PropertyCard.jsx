@@ -2,6 +2,9 @@ import React from 'react'
 import { FaBed, FaBath, FaMapMarkerAlt } from 'react-icons/fa'
 
 const PropertyCard = ({ property }) => {
+  // ✅ Debug log to see what's being rendered
+  console.log('🃏 PropertyCard rendering:', property?.title)
+
   const getBadgeStyle = (type) => {
     const styles = {
       sale: { background: '#e67e22', color: 'white' },
@@ -21,6 +24,12 @@ const PropertyCard = ({ property }) => {
     return emojis[category] || '🏠'
   }
 
+  // ✅ Validate property exists
+  if (!property) {
+    console.warn('⚠️ PropertyCard received no property')
+    return null
+  }
+
   return (
     <div style={{
       background: 'white',
@@ -30,12 +39,12 @@ const PropertyCard = ({ property }) => {
       border: '1px solid #eee',
       transition: 'transform 0.3s ease'
     }}>
-      {/* ✅ Display uploaded image (Base64) or fallback */}
       <img 
         src={property.image || 'https://via.placeholder.com/600x400/eee/999?text=No+Image'} 
-        alt={property.title} 
+        alt={property.title || 'Property'} 
         style={{ width: '100%', height: '220px', objectFit: 'cover' }}
         onError={(e) => {
+          console.warn('⚠️ Image failed to load:', property.image)
           e.target.src = 'https://via.placeholder.com/600x400/eee/999?text=No+Image'
         }}
       />
@@ -50,24 +59,24 @@ const PropertyCard = ({ property }) => {
             background: getBadgeStyle(property.type).background,
             color: getBadgeStyle(property.type).color
           }}>
-            {property.type.charAt(0).toUpperCase() + property.type.slice(1)}
+            {property.type?.charAt(0).toUpperCase() + property.type?.slice(1) || 'Unknown'}
           </span>
           <span style={{
             fontSize: '0.8rem',
             color: '#888'
           }}>
-            {getCategoryEmoji(property.category)} {property.category.charAt(0).toUpperCase() + property.category.slice(1)}
+            {getCategoryEmoji(property.category)} {property.category?.charAt(0).toUpperCase() + property.category?.slice(1) || 'Unknown'}
           </span>
         </div>
         <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#1a1a2e' }}>
-          {property.title}
+          {property.title || 'Untitled Property'}
         </h3>
         <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
           <FaMapMarkerAlt style={{ marginRight: '5px' }} />
-          {property.location}
+          {property.location || 'Location not specified'}
         </p>
         <p style={{ fontSize: '1.3rem', fontWeight: '700', color: '#e67e22', marginBottom: '0.5rem' }}>
-          {property.price}
+          {property.price || 'Price not specified'}
         </p>
         <div style={{ display: 'flex', gap: '20px', color: '#666', fontSize: '0.9rem' }}>
           <span><FaBed /> {property.bedrooms || 0} Beds</span>
