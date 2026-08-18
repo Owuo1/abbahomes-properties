@@ -7,7 +7,7 @@ import {
   isIndexedDBAvailable
 } from '../utils/storage'
 
-// ✅ TEMPORARY: Add a default property for testing
+// ✅ Default property for initial setup
 const DEFAULT_PROPERTIES = [
   {
     id: 'default-1',
@@ -66,7 +66,7 @@ export const useProperties = () => {
   const [storageInfo, setStorageInfo] = useState(null)
   const [isDBReady, setIsDBReady] = useState(false)
 
-  // Load properties on mount
+  // ✅ Load properties on mount - FIXED dependency array
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -89,6 +89,7 @@ export const useProperties = () => {
           console.log('🔍 Test property saved!')
         }
         
+        // ✅ Set the state with the data
         setProperties(data)
         console.log('🔍 Properties set in state:', data)
         
@@ -98,17 +99,16 @@ export const useProperties = () => {
         
       } catch (error) {
         console.error('❌ Failed to load properties:', error)
-        // ✅ Fallback to default
         setProperties(DEFAULT_PROPERTIES)
       }
       setIsLoading(false)
-      console.log('🔍 Loading complete, properties:', properties)
+      console.log('🔍 Loading complete')
     }
     
     loadData()
-  }, [])
+  }, []) // ✅ Empty dependency array - runs once on mount
 
-  // Save properties to IndexedDB
+  // ✅ Save properties to IndexedDB
   const savePropertiesToDB = async (newProperties) => {
     try {
       console.log('💾 Saving properties to IndexedDB:', newProperties)
@@ -126,7 +126,7 @@ export const useProperties = () => {
     }
   }
 
-  // Add a new property
+  // ✅ Add a new property
   const addProperty = async (propertyData, imageFile = null) => {
     console.log('➕ Adding new property...', propertyData)
     
@@ -153,13 +153,14 @@ export const useProperties = () => {
     
     console.log('➕ New property object:', newProperty)
     
+    // ✅ Use the current properties state to add the new property
     const updated = [...properties, newProperty]
     await savePropertiesToDB(updated)
     console.log('➕ Property added successfully! Total properties:', updated.length)
     return newProperty
   }
 
-  // Delete a property
+  // ✅ Delete a property
   const deleteProperty = async (id) => {
     try {
       console.log('🗑️ Deleting property:', id)
