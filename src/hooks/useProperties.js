@@ -6,6 +6,10 @@ import {
   getStorageInfo,
   isIndexedDBAvailable
 } from '../utils/storage'
+import { 
+  savePropertiesToR2, 
+  loadPropertiesFromR2 
+} from '../utils/r2Storage'
 
 // ✅ Default property for initial setup
 const DEFAULT_PROPERTIES = [
@@ -66,32 +70,35 @@ export const useProperties = () => {
   const [storageInfo, setStorageInfo] = useState(null)
   const [isDBReady, setIsDBReady] = useState(false)
 
-  // ✅ Load properties on mount - FIXED dependency array
+  // ✅ Load properties from R2 (primary) with IndexedDB fallback
   useEffect(() => {
     const loadData = async () => {
       try {
         console.log('🔍 Starting to load properties...')
         
-        // Check if IndexedDB is available
-        const dbAvailable = isIndexedDBAvailable()
-        setIsDBReady(dbAvailable)
-        console.log('🔍 IndexedDB available:', dbAvailable)
+        // ✅ Step 1: Try loading from R2 (cloud)
+        let data = await loadPropertiesFromR2()
+        console.log('🔍 Data loaded from R2:', data)
         
-        // Try to load from IndexedDB
-        let data = await loadProperties()
-        console.log('🔍 Data loaded from IndexedDB:', data)
-        
-        // ✅ If no data, add a default test property
+        // ✅ Step 2: If no data in R2, try IndexedDB
         if (!data || data.length === 0) {
-          console.log('🔍 No data found, adding test property...')
-          data = DEFAULT_PROPERTIES
-          await saveProperties(data)
-          console.log('🔍 Test property saved!')
+          console.log('🔍 No data in R2, trying IndexedDB...')
+          data = await loadProperties()
+          console.log('🔍 Data loaded from IndexedDB:', data)
         }
         
-        // ✅ Set the state with the data
+        // ✅ Step 3: If still no data, use defaults and save to R2
+        if (!data || data.length === 0) {
+          console.log('🔍 No data found anywhere, adding default test property...')
+          data = DEFAULT_PROPERTIES
+          await savePropertiesToR2(data)  // Save to R2
+          await saveProperties(data)      // Save to IndexedDB
+          console.log('🔍 Default property saved to R2 and IndexedDB!')
+        }
+        
+        // ✅ Set state with the data
         setProperties(data)
-        console.log('🔍 Properties set in state:', data)
+        console.log('🔍 Properties set in state:', data.length, 'properties')
         
         // Get storage info
         const info = await getStorageInfo()
@@ -99,6 +106,7 @@ export const useProperties = () => {
         
       } catch (error) {
         console.error('❌ Failed to load properties:', error)
+        // Fallback to defaults
         setProperties(DEFAULT_PROPERTIES)
       }
       setIsLoading(false)
@@ -106,15 +114,23 @@ export const useProperties = () => {
     }
     
     loadData()
-  }, []) // ✅ Empty dependency array - runs once on mount
+  }, [])
 
-  // ✅ Save properties to IndexedDB
+  // ✅ Save properties to both IndexedDB and R2
   const savePropertiesToDB = async (newProperties) => {
     try {
-      console.log('💾 Saving properties to IndexedDB:', newProperties)
+      console.log('💾 Saving properties to IndexedDB and R2:', newProperties.length, 'properties')
+      
+      // ✅ Save to IndexedDB (fast local access)
       await saveProperties(newProperties)
+      
+      // ✅ Save to R2 (permanent cloud backup)
+      await savePropertiesToR2(newProperties)
+      
+      // ✅ Update state
       setProperties(newProperties)
-      console.log('💾 Properties saved successfully!')
+      
+      console.log('💾 Properties saved successfully to both IndexedDB and R2!')
       
       // Update storage info
       const info = await getStorageInfo()
@@ -153,7 +169,6 @@ export const useProperties = () => {
     
     console.log('➕ New property object:', newProperty)
     
-    // ✅ Use the current properties state to add the new property
     const updated = [...properties, newProperty]
     await savePropertiesToDB(updated)
     console.log('➕ Property added successfully! Total properties:', updated.length)
@@ -164,8 +179,16 @@ export const useProperties = () => {
   const deleteProperty = async (id) => {
     try {
       console.log('🗑️ Deleting property:', id)
+      
+      // Delete from IndexedDB
       await deleteFromDB(id)
+      
+      // Update state
       const updated = properties.filter(p => p.id !== id)
+      
+      // Save updated list to R2
+      await savePropertiesToR2(updated)
+      
       setProperties(updated)
       console.log('🗑️ Property deleted. Remaining:', updated.length)
       
@@ -205,9 +228,7 @@ export const useProperties = () => {
 
   // Get featured properties (first 3 for homepage)
   const getFeatured = () => {
-    console.log('📊 getFeatured called, properties:', properties)
     const featured = properties.slice(0, 3)
-    console.log('📊 Featured properties:', featured)
     return featured
   }
 
