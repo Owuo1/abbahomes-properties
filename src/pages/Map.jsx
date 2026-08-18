@@ -25,7 +25,7 @@ const Map = () => {
       title: 'Lake Victoria Frontage',
       description: 'Homa Bay County boasts prime shoreline along Lake Victoria, the largest lake in Africa. This offers unparalleled opportunities for beachfront properties, resorts, and tourism-related investments that are scarce elsewhere in Kenya.',
       color: '#1a5276',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600',
+      image: 'https://ibb.co/rG05pDLC/lake-front.jpg',
       imageAlt: 'Lake Victoria shoreline'
     },
     {
