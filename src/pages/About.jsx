@@ -20,9 +20,6 @@ const About = () => {
             />
           </div>
           <div>
-            <h3 style={{ fontSize: '2rem', color: '#1a1a2e', marginBottom: '1rem' }}>
-              Your Trusted <span style={{ color: '#e67e22' }}>Real Estate Partner</span>
-            </h3>
             <p style={{ color: '#666', lineHeight: 1.8, marginBottom: '1.5rem' }}>
               Abba Homes & Properties Ltd is a premier real estate agency dedicated to 
               connecting you with the best <strong>available land, rental apartments, 
