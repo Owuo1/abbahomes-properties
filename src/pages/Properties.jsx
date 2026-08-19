@@ -19,8 +19,8 @@ const Properties = ({ properties = [] }) => {
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', color: '#1a1a2e' }}>
           Property <span style={{ color: '#e67e22' }}>Search</span>
         </h2>
-        <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
-          Find available land, rental apartments, and houses in Homa Bay County
+        <p style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
+          Find available Land, Rental apartments, and Houses in Homa Bay County
         </p>
 
         {/* ✅ Only show filters if there are properties */}
