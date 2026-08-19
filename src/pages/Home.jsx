@@ -3,24 +3,6 @@ import { Link } from 'react-router-dom'
 import PropertyCard from '../components/PropertyCard'
 
 const Home = ({ featuredProperties = [] }) => {
-  // ✅ Debug logs
-  console.log('🏠 Home component rendered')
-  console.log('🏠 featuredProperties prop:', featuredProperties)
-  console.log('🏠 Number of properties:', featuredProperties?.length || 0)
-  
-  const properties = featuredProperties || []
-  
-  // ✅ Case-insensitive category filtering
-  const landProperties = properties.filter(p => p?.category?.toLowerCase() === 'land').slice(0, 4)
-  const apartmentProperties = properties.filter(p => p?.category?.toLowerCase() === 'apartment').slice(0, 4)
-  const houseProperties = properties.filter(p => p?.category?.toLowerCase() === 'house').slice(0, 4)
-  
-  console.log('🏠 Land properties:', landProperties)
-  console.log('🏠 Apartment properties:', apartmentProperties)
-  console.log('🏠 House properties:', houseProperties)
-  
-  const hasProperties = properties.length > 0
-  console.log('🏠 Has properties:', hasProperties)
 
   return (
     <div>
@@ -100,139 +82,419 @@ const Home = ({ featuredProperties = [] }) => {
         </div>
       </section>
 
-      {/* AUTOMATED SECTION: Available Land */}
-      {landProperties.length > 0 && (
-        <section style={{ padding: '60px 20px', background: '#f8f9fa' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div>
-                <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  Available <span style={{ color: '#e67e22' }}>Land</span>
-                </h2>
-                <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                  Prime plots and land parcels for sale across Homa Bay County
+    const reasons = [
+    {
+      title: 'Lake Victoria Frontage',
+      description: 'Homa Bay County boasts prime shoreline along Lake Victoria, the largest lake in Africa. This offers unparalleled opportunities for beachfront properties, resorts, and tourism-related investments that are scarce elsewhere in Kenya.',
+      color: '#1a5276',
+      image: 'https://i.ibb.co/rG05pDLC/lake-front.jpg',
+      imageAlt: 'Lake Victoria shoreline'
+    },
+    {
+      title: 'Rapid Urbanization',
+      description: 'Homa Bay Town is experiencing unprecedented growth with new roads, modern buildings, and expanding infrastructure. Property values have appreciated 200-300% in the last 5 years, making it a prime investment destination for early movers.',
+      color: '#e67e22',
+      image: 'https://i.ibb.co/PZ6jJGsy/Urb.jpg',
+      imageAlt: 'Modern city development'
+    },
+    {
+      title: 'Educational Hub',
+      description: 'Home to Tom Mboya University, several teacher training colleges, and numerous secondary schools. The student population creates consistent demand for rental housing, boarding facilities, and commercial spaces.',
+      color: '#8e44ad',
+      image: 'https://i.ibb.co/kV6yxLWV/Edu.jpg',
+      imageAlt: 'University campus'
+    },
+    {
+      title: 'Growing Healthcare Sector',
+      description: 'With the expansion of Homa Bay County Referral Hospital and emerging private healthcare facilities, there is a growing demand for medical-related real estate including clinics, pharmacies, and staff housing.',
+      color: '#27ae60',
+      image: 'https://i.ibb.co/GQrcVLLP/RRwwzQ6.jpg',
+      imageAlt: 'Modern hospital building'
+    },
+    {
+      title: 'Improving Infrastructure',
+      description: 'The county is benefiting from national government investments in roads (Kisumu-Homa Bay highway), electricity extension, and water projects. These developments are making once-remote areas accessible and valuable.',
+      color: '#2980b9',
+      image: 'https://i.ibb.co/Qgb8Vbj/infra.jpg',
+      imageAlt: 'Modern highway infrastructure'
+    },
+    {
+      title: 'Untapped Agricultural Potential',
+      description: 'Rich volcanic soils and favorable climate make Homa Bay ideal for farming. This attracts agri-business investors who need storage facilities, processing plants, and worker accommodation — creating diverse real estate opportunities.',
+      color: '#2ecc71',
+      image: 'https://i.ibb.co/ymKdmsQt/agric.jpg',
+      imageAlt: 'Agricultural landscape'
+    },
+    // ✅ NEW REASONS
+    {
+      title: 'Growing Hospitality Industry',
+      description: 'Homa Bay is emerging as a key tourist destination with increasing demand for hotels, guest houses, and short-term rentals. The government\'s focus on tourism development is creating lucrative opportunities for hospitality investments with high occupancy rates year-round.',
+      color: '#e74c3c',
+      image: 'https://i.ibb.co/vvhmj3DT/bel.jpg',
+      imageAlt: 'Modern hotel building'
+    },
+    {
+      title: 'Tourism & Leisure Potential',
+      description: 'Home to Ruma National Park, the only park in Kenya with roan antelopes, and scenic attractions like Lake Victoria\'s islands and breathtaking sunsets. Tourism is a growing sector with demand for eco-lodges, resorts, recreational facilities, and tour services.',
+      color: '#f39c12',
+      image: 'https://i.ibb.co/C3Mb3D9d/rumaN.jpg',
+      imageAlt: 'Tourism and beach destination'
+    },
+    {
+      title: 'Secure & Stable Investment Climate',
+      description: 'Homa Bay County enjoys a stable political environment with proactive county leadership fostering business growth. The government\'s investment-friendly policies, combined with improving security infrastructure, make it a safe and reliable destination for long-term real estate investments.',
+      color: '#2c3e50',
+      image: 'https://i.ibb.co/zTjLHQgT/sec.jpg',
+      imageAlt: 'Secure investment environment'
+    }
+  ]
+
+  const investmentOpportunities = [
+    {
+      icon: <FaBuilding />,
+      title: 'Apartment Complexes',
+      description: 'Rising population and urbanization are driving high demand for modern apartments. Rental yields average 8-12% annually in prime locations like Homa Bay Town and Kendu Bay.',
+      link: '/properties'
+    },
+    {
+      icon: <FaHome />,
+      title: 'Residential Houses',
+      description: 'Affordable housing is a government priority. Building residential homes in growing neighborhoods offers guaranteed returns with increasing property values and steady rental income.',
+      link: '/properties'
+    },
+    {
+      icon: <FaStore />,
+      title: 'Commercial Shops',
+      description: 'The growing middle class is demanding retail spaces. Strategic locations near markets, schools, and transport hubs offer strong foot traffic and consistent rental income.',
+      link: '/properties'
+    },
+    {
+      icon: <FaBriefcase />,
+      title: 'Land Banking',
+      description: 'Purchasing land now in developing corridors yields significant returns. Areas near the new roads and planned infrastructure are prime for appreciation. Your investment can double within 3-5 years.',
+      link: '/properties'
+    }
+  ]
+
+  return (
+    <section style={{ 
+      padding: '80px 20px', 
+      background: 'white',
+      marginTop: '20px'
+    }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
+            color: '#1a1a2e',
+            marginBottom: '1rem'
+          }}>
+            Why <span style={{ color: '#e67e22' }}>Homa Bay</span>?
+          </h1>
+          <p style={{ 
+            fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
+            color: '#666',
+            maxWidth: '750px',
+            margin: '0 auto',
+            lineHeight: 1.8
+          }}>
+            Discover why Homa Bay County is Kenya's next big real estate frontier — 
+            where opportunity meets strategic growth.
+          </p>
+        </div>
+
+        {/* Reasons Grid with Images */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', 
+          gap: '30px',
+          marginBottom: '60px'
+        }}>
+          {reasons.map((reason, index) => (
+            <div 
+              key={index}
+              style={{
+                background: '#ffffff',
+                borderRadius: '15px',
+                overflow: 'hidden',
+                borderTop: `6px solid ${reason.color}`,
+                boxShadow: '0 5px 20px rgba(0,0,0,0.05)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px)'
+                e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)'
+              }}
+            >
+              {/* Image - Using object-fit: cover to fully fill the box */}
+              <div style={{
+                width: '100%',
+                height: '220px',
+                overflow: 'hidden',
+                position: 'relative',
+                background: '#e8e8e8'
+              }}>
+                <img 
+                  src={reason.image} 
+                  alt={reason.imageAlt}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',  /* ✅ Changed to 'cover' for full fill */
+                    transition: 'transform 0.5s ease'
+                  }}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/600x400/eee/999?text=Image+Coming+Soon'
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.08)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '60px',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  left: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}>
+                  <div style={{ 
+                    color: 'white',
+                    fontSize: '1.5rem',
+                    background: 'rgba(0,0,0,0.3)',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    {reason.icon}
+                  </div>
+                  <h3 style={{ 
+                    color: 'white',
+                    fontSize: '1.2rem',
+                    margin: 0,
+                    textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+                  }}>
+                    {reason.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div style={{ padding: '20px' }}>
+                <p style={{ 
+                  color: '#555',
+                  lineHeight: 1.7,
+                  fontSize: '0.95rem',
+                  margin: 0
+                }}>
+                  {reason.description}
                 </p>
               </div>
-              <Link to="/properties">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '8px 20px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}>
-                  View All →
-                </button>
-              </Link>
             </div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: '30px' 
-            }}>
-              {landProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+          ))}
+        </div>
 
-      {/* AUTOMATED SECTION: Available Apartments */}
-      {apartmentProperties.length > 0 && (
-        <section style={{ padding: '60px 20px', background: 'white' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div>
-                <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  Available <span style={{ color: '#e67e22' }}>Apartments</span>
-                </h2>
-                <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                  Modern apartments in prime locations across Homa Bay County
+        {/* Investment Opportunities Section */}
+        <div style={{ 
+          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+          color: 'white',
+          padding: '60px 40px',
+          borderRadius: '20px',
+          marginBottom: '60px'
+        }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2rem, 4vw, 2.8rem)', 
+            textAlign: 'center',
+            marginBottom: '1rem'
+          }}>
+            Investment <span style={{ color: '#e67e22' }}>Opportunities</span>
+          </h2>
+          <p style={{ 
+            textAlign: 'center',
+            opacity: 0.9,
+            fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+            marginBottom: '3rem',
+            maxWidth: '700px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          }}>
+            Four proven ways to maximize your returns in Homa Bay County
+          </p>
+
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+            gap: '30px'
+          }}>
+            {investmentOpportunities.map((item, index) => (
+              <div 
+                key={index}
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  padding: '30px',
+                  borderRadius: '15px',
+                  textAlign: 'center',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  transition: 'transform 0.3s ease, background 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.2)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.1)'
+                }}
+              >
+                <div style={{ 
+                  fontSize: '2.5rem', 
+                  color: '#e67e22',
+                  marginBottom: '15px'
+                }}>
+                  {item.icon}
+                </div>
+                <h3 style={{ 
+                  fontSize: '1.3rem', 
+                  marginBottom: '10px',
+                  color: '#e67e22'
+                }}>
+                  {item.title}
+                </h3>
+                <p style={{ 
+                  opacity: 0.9,
+                  lineHeight: 1.6,
+                  fontSize: '0.95rem',
+                  marginBottom: '15px'
+                }}>
+                  {item.description}
                 </p>
+                <Link to={item.link}>
+                  <button style={{
+                    background: '#e67e22',
+                    color: 'white',
+                    border: 'none',
+                    padding: '10px 25px',
+                    borderRadius: '25px',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    transition: 'background 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#d35400'}
+                  onMouseLeave={(e) => e.target.style.background = '#e67e22'}
+                  >
+                    Explore →
+                  </button>
+                </Link>
               </div>
-              <Link to="/properties">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '8px 20px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}>
-                  View All →
-                </button>
-              </Link>
-            </div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: '30px' 
-            }}>
-              {apartmentProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
 
-      {/* AUTOMATED SECTION: Available Houses */}
-      {houseProperties.length > 0 && (
-        <section style={{ padding: '60px 20px', background: '#f8f9fa' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div>
-                <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  Available <span style={{ color: '#e67e22' }}>Houses</span>
-                </h2>
-                <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                  Spacious family homes in desirable neighborhoods
-                </p>
-              </div>
-              <Link to="/properties">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '8px 20px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}>
-                  View All →
-                </button>
-              </Link>
-            </div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: '30px' 
-            }}>
-              {houseProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
+        {/* Market Statistics */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+          gap: '30px',
+          marginBottom: '60px'
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e67e22' }}>200%+</div>
+            <p style={{ color: '#666', marginTop: '5px' }}>Property value appreciation in 5 years</p>
           </div>
-        </section>
-      )}
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e67e22' }}>8-12%</div>
+            <p style={{ color: '#666', marginTop: '5px' }}>Average rental yields</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e67e22' }}>300K+</div>
+            <p style={{ color: '#666', marginTop: '5px' }}>Growing population seeking housing</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e67e22' }}>10,000+</div>
+            <p style={{ color: '#666', marginTop: '5px' }}>New jobs created annually</p>
+          </div>
+        </div>
 
-      {/* Empty State - If no properties exist */}
-      {!hasProperties && (
-        <section style={{ padding: '60px 20px', background: 'white', textAlign: 'center' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <h3 style={{ color: '#1a1a2e' }}>No Properties Available Yet</h3>
-            <p style={{ color: '#666', marginTop: '1rem' }}>
-              Check back soon for available land, apartments, and houses in Homa Bay County.
-            </p>
-            <p style={{ color: '#999', fontSize: '0.9rem', marginTop: '1rem' }}>
-              Admin: Click "Add Listing" to start adding properties.
-            </p>
+        {/* Call to Action */}
+        <div style={{ 
+          textAlign: 'center',
+          padding: '40px 20px',
+          background: '#f8f9fa',
+          borderRadius: '15px'
+        }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.2rem)', color: '#1a1a2e' }}>
+            Ready to <span style={{ color: '#e67e22' }}>Invest</span> in Homa Bay?
+          </h2>
+          <p style={{ 
+            color: '#666', 
+            maxWidth: '600px', 
+            margin: '1rem auto 2rem',
+            fontSize: '1.1rem'
+          }}>
+            Browse our available properties or contact our team for personalized investment guidance.
+          </p>
+          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/properties">
+              <button style={{
+                background: '#e67e22',
+                color: 'white',
+                border: 'none',
+                padding: '12px 35px',
+                borderRadius: '30px',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'background 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.background = '#d35400'}
+              onMouseLeave={(e) => e.target.style.background = '#e67e22'}
+              >
+                View Properties
+              </button>
+            </Link>
+            <Link to="/contact">
+              <button style={{
+                background: 'transparent',
+                color: '#e67e22',
+                border: '2px solid #e67e22',
+                padding: '12px 35px',
+                borderRadius: '30px',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#e67e22'
+                e.target.style.color = 'white'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'transparent'
+                e.target.style.color = '#e67e22'
+              }}
+              >
+                Contact Us
+              </button>
+            </Link>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
       )}
     </div>
   )
