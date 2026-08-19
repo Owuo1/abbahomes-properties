@@ -22,7 +22,18 @@ const Contact = () => {
     e.preventDefault()
     setIsSending(true)
 
-    // ✅ Prepare the data to send to EmailJS
+    // ✅ Log what we're sending
+    console.log('📤 Sending to EmailJS:')
+    console.log('Service ID:', SERVICE_ID)
+    console.log('Template ID:', TEMPLATE_ID)
+    console.log('Public Key:', PUBLIC_KEY)
+    console.log('Template Params:', {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      currentYear: new Date().getFullYear()
+    })
+
     const templateParams = {
       name: formData.name,
       email: formData.email,
@@ -30,20 +41,26 @@ const Contact = () => {
       currentYear: new Date().getFullYear()
     }
 
-    // ✅ Send the email
     emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID,
       templateParams,
       PUBLIC_KEY
     )
-    .then(() => {
+    .then((response) => {
+      console.log('✅ Email sent successfully:', response)
       alert('✅ Message sent successfully! We will get back to you soon.')
       setFormData({ name: '', email: '', message: '' })
     })
     .catch((error) => {
-      console.error('Email send failed:', error)
-      alert('❌ Failed to send message. Please try again or contact us directly.')
+      console.error('❌ Email send failed:', error)
+      // ✅ Show more detailed error
+      if (error.text) {
+        console.error('Error details:', error.text)
+        alert(`❌ Failed to send: ${error.text}`)
+      } else {
+        alert('❌ Failed to send message. Please try again or contact us directly.')
+      }
     })
     .finally(() => {
       setIsSending(false)
