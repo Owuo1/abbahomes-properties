@@ -77,7 +77,7 @@ const Map = () => {
       title: 'Growing Hospitality Industry',
       description: 'Homa Bay is emerging as a key tourist destination with increasing demand for hotels, guest houses, and short-term rentals. The government\'s focus on tourism development is creating lucrative opportunities for hospitality investments with high occupancy rates year-round.',
       color: '#e74c3c',
-      image: 'https://i.ibb.co/CHw4dPz/hotel.jpg',
+      image: 'https://i.ibb.co/vvhmj3DT/bel.jpg',
       imageAlt: 'Modern hotel building'
     },
     {
@@ -85,7 +85,7 @@ const Map = () => {
       title: 'Tourism & Leisure Potential',
       description: 'Home to Ruma National Park, the only park in Kenya with roan antelopes, and scenic attractions like Lake Victoria\'s islands and breathtaking sunsets. Tourism is a growing sector with demand for eco-lodges, resorts, recreational facilities, and tour services.',
       color: '#f39c12',
-      image: 'https://i.ibb.co/HPKkT9h/tourism.jpg',
+      image: 'https://i.ibb.co/C3Mb3D9d/rumaN.jpg',
       imageAlt: 'Tourism and beach destination'
     },
     {
