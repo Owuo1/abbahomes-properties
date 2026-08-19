@@ -16,7 +16,7 @@ const Services = () => {
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', color: '#1a1a2e' }}>
           Our <span style={{ color: '#e67e22' }}>Services</span>
         </h2>
-        <p style={{ fontSize: '1.5rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
+        <p style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
           Comprehensive real estate solutions tailored to your needs
         </p>
         
