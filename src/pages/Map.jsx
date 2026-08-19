@@ -93,7 +93,7 @@ const Map = () => {
       title: 'Secure & Stable Investment Climate',
       description: 'Homa Bay County enjoys a stable political environment with proactive county leadership fostering business growth. The government\'s investment-friendly policies, combined with improving security infrastructure, make it a safe and reliable destination for long-term real estate investments.',
       color: '#2c3e50',
-      image: 'https://i.ibb.co/SxmkT0q/security.jpg',
+      image: 'https://i.ibb.co/zTjLHQgT/sec.jpg',
       imageAlt: 'Secure investment environment'
     }
   ]
