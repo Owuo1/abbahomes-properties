@@ -16,9 +16,9 @@ const Services = () => {
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', color: '#1a1a2e' }}>
           Our <span style={{ color: '#e67e22' }}>Services</span>
         </h2>
-        <p style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
+        <h4 style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
           Comprehensive real estate solutions tailored to your needs
-        </p>
+        </h4>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
           {services.map((service, index) => (
