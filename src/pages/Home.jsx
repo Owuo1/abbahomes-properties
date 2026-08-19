@@ -46,12 +46,12 @@ const Home = ({ featuredProperties = [] }) => {
       icon: <FaUniversity size={40} />
     },
     {
-      title: 'Growing Healthcare Sector',
-      description: 'With the expansion of Homa Bay County Referral Hospital and emerging private healthcare facilities, there is a growing demand for medical-related real estate including clinics, pharmacies, and staff housing.',
-      color: '#27ae60',
-      image: 'https://i.ibb.co/GQrcVLLP/RRwwzQ6.jpg',
-      imageAlt: 'Modern hospital building',
-      icon: <FaHospital size={40} />
+      title: 'Growing Hospitality Industry',
+      description: 'Homa Bay is emerging as a key tourist destination with increasing demand for hotels, guest houses, and short-term rentals. The government\'s focus on tourism development is creating lucrative opportunities for hospitality investments with high occupancy rates year-round.',
+      color: '#e74c3c',
+      image: 'https://i.ibb.co/vvhmj3DT/bel.jpg',
+      imageAlt: 'Modern hotel building',
+      icon: <FaHotel size={40} />
     },
     {
       title: 'Improving Infrastructure',
@@ -70,12 +70,12 @@ const Home = ({ featuredProperties = [] }) => {
       icon: <FaTree size={40} />
     },
     {
-      title: 'Growing Hospitality Industry',
-      description: 'Homa Bay is emerging as a key tourist destination with increasing demand for hotels, guest houses, and short-term rentals. The government\'s focus on tourism development is creating lucrative opportunities for hospitality investments with high occupancy rates year-round.',
-      color: '#e74c3c',
-      image: 'https://i.ibb.co/vvhmj3DT/bel.jpg',
-      imageAlt: 'Modern hotel building',
-      icon: <FaHotel size={40} />
+      title: 'Growing Healthcare Sector',
+      description: 'With the expansion of Homa Bay County Referral Hospital and emerging private healthcare facilities, there is a growing demand for medical-related real estate including clinics, pharmacies, and staff housing.',
+      color: '#27ae60',
+      image: 'https://i.ibb.co/GQrcVLLP/RRwwzQ6.jpg',
+      imageAlt: 'Modern hospital building',
+      icon: <FaHospital size={40} />
     },
     {
       title: 'Tourism & Leisure Potential',
@@ -131,8 +131,7 @@ const Home = ({ featuredProperties = [] }) => {
   const statistics = [
     { value: '200%+', label: 'Property value appreciation in 5 years' },
     { value: '8-12%', label: 'Average rental yields' },
-    { value: '300K+', label: 'Growing population seeking housing' },
-    { value: '10,000+', label: 'New jobs created annually' }
+    { value: '300K+', label: 'Growing population seeking housing' }
   ]
 
   // ============================================================
@@ -155,36 +154,6 @@ const Home = ({ featuredProperties = [] }) => {
             Discover premium properties across Homa Bay County. From modern apartments, rentals, and land,
             we have the perfect home for you.
           </p>
-          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/properties">
-              <button style={{
-                background: '#e67e22',
-                color: 'white',
-                border: 'none',
-                padding: '12px 30px',
-                borderRadius: '30px',
-                fontSize: '1rem',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>
-                Browse Properties
-              </button>
-            </Link>
-            <Link to="/contact">
-              <button style={{
-                background: 'transparent',
-                color: 'white',
-                border: '2px solid #e67e22',
-                padding: '12px 30px',
-                borderRadius: '30px',
-                fontSize: '1rem',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>
-                Contact Us
-              </button>
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -500,30 +469,6 @@ const Home = ({ featuredProperties = [] }) => {
                 onMouseLeave={(e) => e.target.style.background = '#e67e22'}
                 >
                   View Properties
-                </button>
-              </Link>
-              <Link to="/contact">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '12px 35px',
-                  borderRadius: '30px',
-                  fontSize: '1rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#e67e22'
-                  e.target.style.color = 'white'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = 'transparent'
-                  e.target.style.color = '#e67e22'
-                }}
-                >
-                  Contact Us
                 </button>
               </Link>
             </div>
