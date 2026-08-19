@@ -77,14 +77,10 @@ const Contact = () => {
         }}>
           Get in <span style={{ color: '#e67e22' }}>Touch</span>
         </h2>
-        <p style={{ 
-          textAlign: 'center', 
-          color: '#666', 
-          marginBottom: '3rem',
-          fontSize: 'clamp(1rem, 2vw, 1.1rem)'
+        <h4 style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem'
         }}>
           We'd love to hear from you
-        </p>
+        </h4>
         
         <div style={{ 
           display: 'grid', 
