@@ -24,7 +24,6 @@ import {
 const Map = () => {
   const reasons = [
     {
-      icon: <FaWater size={40} />,
       title: 'Lake Victoria Frontage',
       description: 'Homa Bay County boasts prime shoreline along Lake Victoria, the largest lake in Africa. This offers unparalleled opportunities for beachfront properties, resorts, and tourism-related investments that are scarce elsewhere in Kenya.',
       color: '#1a5276',
@@ -32,7 +31,6 @@ const Map = () => {
       imageAlt: 'Lake Victoria shoreline'
     },
     {
-      icon: <FaChartLine size={40} />,
       title: 'Rapid Urbanization',
       description: 'Homa Bay Town is experiencing unprecedented growth with new roads, modern buildings, and expanding infrastructure. Property values have appreciated 200-300% in the last 5 years, making it a prime investment destination for early movers.',
       color: '#e67e22',
@@ -40,7 +38,6 @@ const Map = () => {
       imageAlt: 'Modern city development'
     },
     {
-      icon: <FaUniversity size={40} />,
       title: 'Educational Hub',
       description: 'Home to Tom Mboya University, several teacher training colleges, and numerous secondary schools. The student population creates consistent demand for rental housing, boarding facilities, and commercial spaces.',
       color: '#8e44ad',
@@ -48,7 +45,6 @@ const Map = () => {
       imageAlt: 'University campus'
     },
     {
-      icon: <FaHospital size={40} />,
       title: 'Growing Healthcare Sector',
       description: 'With the expansion of Homa Bay County Referral Hospital and emerging private healthcare facilities, there is a growing demand for medical-related real estate including clinics, pharmacies, and staff housing.',
       color: '#27ae60',
@@ -56,7 +52,6 @@ const Map = () => {
       imageAlt: 'Modern hospital building'
     },
     {
-      icon: <FaRoad size={40} />,
       title: 'Improving Infrastructure',
       description: 'The county is benefiting from national government investments in roads (Kisumu-Homa Bay highway), electricity extension, and water projects. These developments are making once-remote areas accessible and valuable.',
       color: '#2980b9',
@@ -64,7 +59,6 @@ const Map = () => {
       imageAlt: 'Modern highway infrastructure'
     },
     {
-      icon: <FaTree size={40} />,
       title: 'Untapped Agricultural Potential',
       description: 'Rich volcanic soils and favorable climate make Homa Bay ideal for farming. This attracts agri-business investors who need storage facilities, processing plants, and worker accommodation — creating diverse real estate opportunities.',
       color: '#2ecc71',
@@ -73,7 +67,6 @@ const Map = () => {
     },
     // ✅ NEW REASONS
     {
-      icon: <FaHotel size={40} />,
       title: 'Growing Hospitality Industry',
       description: 'Homa Bay is emerging as a key tourist destination with increasing demand for hotels, guest houses, and short-term rentals. The government\'s focus on tourism development is creating lucrative opportunities for hospitality investments with high occupancy rates year-round.',
       color: '#e74c3c',
@@ -81,7 +74,6 @@ const Map = () => {
       imageAlt: 'Modern hotel building'
     },
     {
-      icon: <FaUmbrellaBeach size={40} />,
       title: 'Tourism & Leisure Potential',
       description: 'Home to Ruma National Park, the only park in Kenya with roan antelopes, and scenic attractions like Lake Victoria\'s islands and breathtaking sunsets. Tourism is a growing sector with demand for eco-lodges, resorts, recreational facilities, and tour services.',
       color: '#f39c12',
@@ -89,7 +81,6 @@ const Map = () => {
       imageAlt: 'Tourism and beach destination'
     },
     {
-      icon: <FaLock size={40} />,
       title: 'Secure & Stable Investment Climate',
       description: 'Homa Bay County enjoys a stable political environment with proactive county leadership fostering business growth. The government\'s investment-friendly policies, combined with improving security infrastructure, make it a safe and reliable destination for long-term real estate investments.',
       color: '#2c3e50',
