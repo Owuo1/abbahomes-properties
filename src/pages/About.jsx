@@ -7,9 +7,9 @@ const About = () => {
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', color: '#1a1a2e' }}>
           <span style={{ color: '#e67e22' }}>Abba Homes & Properties</span>
         </h2>
-        <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
+        <h4 style={{ fontSize: '1.5rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
           Your Trusted Partner in Land, Rentals & Property Management
-        </p>
+        </h4>
         
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
           <div>
