@@ -15,7 +15,10 @@ import {
   FaHospital,
   FaSchool,
   FaBriefcase,
-  FaCity
+  FaCity,
+  FaHotel,
+  FaUmbrellaBeach,
+  FaLock
 } from 'react-icons/fa'
 
 const Map = () => {
@@ -67,6 +70,31 @@ const Map = () => {
       color: '#2ecc71',
       image: 'https://i.ibb.co/ymKdmsQt/agric.jpg',
       imageAlt: 'Agricultural landscape'
+    },
+    // ✅ NEW REASONS
+    {
+      icon: <FaHotel size={40} />,
+      title: 'Growing Hospitality Industry',
+      description: 'Homa Bay is emerging as a key tourist destination with increasing demand for hotels, guest houses, and short-term rentals. The government\'s focus on tourism development is creating lucrative opportunities for hospitality investments with high occupancy rates year-round.',
+      color: '#e74c3c',
+      image: 'https://i.ibb.co/CHw4dPz/hotel.jpg',
+      imageAlt: 'Modern hotel building'
+    },
+    {
+      icon: <FaUmbrellaBeach size={40} />,
+      title: 'Tourism & Leisure Potential',
+      description: 'Home to Ruma National Park, the only park in Kenya with roan antelopes, and scenic attractions like Lake Victoria\'s islands and breathtaking sunsets. Tourism is a growing sector with demand for eco-lodges, resorts, recreational facilities, and tour services.',
+      color: '#f39c12',
+      image: 'https://i.ibb.co/HPKkT9h/tourism.jpg',
+      imageAlt: 'Tourism and beach destination'
+    },
+    {
+      icon: <FaLock size={40} />,
+      title: 'Secure & Stable Investment Climate',
+      description: 'Homa Bay County enjoys a stable political environment with proactive county leadership fostering business growth. The government\'s investment-friendly policies, combined with improving security infrastructure, make it a safe and reliable destination for long-term real estate investments.',
+      color: '#2c3e50',
+      image: 'https://i.ibb.co/SxmkT0q/security.jpg',
+      imageAlt: 'Secure investment environment'
     }
   ]
 
@@ -152,12 +180,16 @@ const Map = () => {
                 e.currentTarget.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)'
               }}
             >
-              {/* Image */}
+              {/* Image - Using object-fit: contain to maintain clarity */}
               <div style={{
                 width: '100%',
                 height: '220px',
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
+                background: '#f5f5f5',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
                 <img 
                   src={reason.image} 
@@ -165,10 +197,15 @@ const Map = () => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.5s ease'
+                    objectFit: 'contain',  /* ✅ Changed from 'cover' to 'contain' */
+                    transition: 'transform 0.5s ease',
+                    background: '#f5f5f5'
                   }}
-                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/600x400/eee/999?text=Image+Coming+Soon'
+                    e.target.style.objectFit = 'cover'
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.03)'}
                   onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                 />
                 <div style={{
