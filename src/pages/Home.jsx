@@ -220,7 +220,7 @@ const Home = ({ featuredProperties = [] }) => {
       <section style={{ 
         padding: '80px 20px', 
         background: 'white',
-        marginTop: '20px'
+        marginTop: '5px'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           {/* Header */}
