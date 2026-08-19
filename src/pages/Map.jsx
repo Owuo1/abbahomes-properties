@@ -180,16 +180,13 @@ const Map = () => {
                 e.currentTarget.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)'
               }}
             >
-              {/* Image - Using object-fit: contain to maintain clarity */}
+              {/* Image - Using object-fit: cover to fully fill the box */}
               <div style={{
                 width: '100%',
                 height: '220px',
                 overflow: 'hidden',
                 position: 'relative',
-                background: '#f5f5f5',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                background: '#e8e8e8'
               }}>
                 <img 
                   src={reason.image} 
@@ -197,15 +194,13 @@ const Map = () => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'contain',  /* ✅ Changed from 'cover' to 'contain' */
-                    transition: 'transform 0.5s ease',
-                    background: '#f5f5f5'
+                    objectFit: 'cover',  /* ✅ Changed to 'cover' for full fill */
+                    transition: 'transform 0.5s ease'
                   }}
                   onError={(e) => {
                     e.target.src = 'https://via.placeholder.com/600x400/eee/999?text=Image+Coming+Soon'
-                    e.target.style.objectFit = 'cover'
                   }}
-                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.03)'}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.08)'}
                   onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                 />
                 <div style={{
