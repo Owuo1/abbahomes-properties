@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import emailjs from '@emailjs/browser'
 
 // ✅ EmailJS Credentials - Replace with your values
-const SERVICE_ID = 'service_xxxxxxx'  // ← Get from EmailJS Dashboard → Email Services
+const SERVICE_ID = 'service_ige8di8'  // ← Get from EmailJS Dashboard → Email Services
 const TEMPLATE_ID = 'template_ij7b487' // ← From your screenshot
-const PUBLIC_KEY = 'user_xxxxxxxxxxxxx' // ← Get from EmailJS Dashboard → Account → API Keys
+const PUBLIC_KEY = 'user_FA4B7Ql9wC1l6hWsK' // ← Get from EmailJS Dashboard → Account → API Keys
 
 const Contact = () => {
   const [formData, setFormData] = useState({
