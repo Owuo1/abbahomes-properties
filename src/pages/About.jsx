@@ -56,7 +56,7 @@ const About = () => {
           <h3 style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '1rem' }}>
             What <span style={{ color: '#e67e22' }}>We Offer</span>
           </h3>
-          <h4 style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
+          <h4 style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
             Comprehensive real estate solutions tailored to your needs
           </h4>
 
@@ -129,7 +129,7 @@ const About = () => {
           <h3 style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '1rem' }}>
             Why Choose <span style={{ color: '#e67e22' }}>Us</span>
           </h3>
-          <h4 style={{ textAlign: 'center', color: '#666', marginBottom: '3rem' }}>
+          <h4 style={{ fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', marginBottom: '3rem' }}>
             What makes Abba Homes & Properties your ideal real estate partner
           </h4>
 
