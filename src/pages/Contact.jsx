@@ -209,7 +209,7 @@ const Contact = () => {
                     fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
                     wordBreak: 'break-word'
                   }}>
-                    Rod Kopany, Homa Bay County, Kenya
+                    Rodi Kopany, Homa Bay County, Kenya
                   </p>
                 </div>
               </div>
