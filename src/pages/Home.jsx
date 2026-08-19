@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import PropertyCard from '../components/PropertyCard'
 import { 
   FaBuilding, 
   FaHome, 
@@ -137,15 +136,7 @@ const Home = ({ featuredProperties = [] }) => {
   ]
 
   // ============================================================
-  // 4. CATEGORY FILTERING FOR PROPERTIES
-  // ============================================================
-  const properties = featuredProperties || []
-  const landProperties = properties.filter(p => p?.category?.toLowerCase() === 'land').slice(0, 4)
-  const apartmentProperties = properties.filter(p => p?.category?.toLowerCase() === 'apartment').slice(0, 4)
-  const houseProperties = properties.filter(p => p?.category?.toLowerCase() === 'house').slice(0, 4)
-
-  // ============================================================
-  // 5. RENDER COMPONENT
+  // 4. RENDER COMPONENT
   // ============================================================
   return (
     <div>
@@ -224,124 +215,6 @@ const Home = ({ featuredProperties = [] }) => {
           </Link>
         </div>
       </section>
-
-      {/* ===== PROPERTY SECTIONS ===== */}
-      {landProperties.length > 0 && (
-        <section style={{ padding: '60px 20px', background: '#f8f9fa' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div>
-                <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  Available <span style={{ color: '#e67e22' }}>Land</span>
-                </h2>
-                <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                  Prime plots and land parcels for sale across Homa Bay County
-                </p>
-              </div>
-              <Link to="/properties">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '8px 20px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}>
-                  View All →
-                </button>
-              </Link>
-            </div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: '30px' 
-            }}>
-              {landProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {apartmentProperties.length > 0 && (
-        <section style={{ padding: '60px 20px', background: 'white' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div>
-                <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  Available <span style={{ color: '#e67e22' }}>Apartments</span>
-                </h2>
-                <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                  Modern apartments in prime locations across Homa Bay County
-                </p>
-              </div>
-              <Link to="/properties">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '8px 20px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}>
-                  View All →
-                </button>
-              </Link>
-            </div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: '30px' 
-            }}>
-              {apartmentProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {houseProperties.length > 0 && (
-        <section style={{ padding: '60px 20px', background: '#f8f9fa' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div>
-                <h2 style={{ fontSize: '2rem', color: '#1a1a2e', margin: 0 }}>
-                  Available <span style={{ color: '#e67e22' }}>Houses</span>
-                </h2>
-                <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                  Spacious family homes in desirable neighborhoods
-                </p>
-              </div>
-              <Link to="/properties">
-                <button style={{
-                  background: 'transparent',
-                  color: '#e67e22',
-                  border: '2px solid #e67e22',
-                  padding: '8px 20px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}>
-                  View All →
-                </button>
-              </Link>
-            </div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: '30px' 
-            }}>
-              {houseProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ===== WHY HOMA BAY SECTION ===== */}
       <section style={{ 
