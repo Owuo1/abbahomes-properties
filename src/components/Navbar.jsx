@@ -12,7 +12,7 @@ const Navbar = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Search Properties', path: '/properties' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact Us', path: '/contact' }
   ]
 
   const toggleMenu = () => setIsOpen(!isOpen)
