@@ -189,7 +189,7 @@ const Home = ({ featuredProperties = [] }) => {
       </section>
 
       {/* ===== WELCOME SECTION ===== */}
-      <section style={{ padding: '80px 20px', background: 'white' }}>
+      <section style={{ padding: '80px 20px', background: 'white', marginBottom: '20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', color: '#1a1a2e' }}>
             Welcome to <span style={{ color: '#e67e22' }}>Abba Homes & Properties</span>
