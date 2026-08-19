@@ -75,13 +75,11 @@ const Contact = () => {
           }}>
             Get in <span style={{ color: '#e67e22' }}>Touch</span>
           </h2>
-          <p style={{ 
-            fontSize: 'clamp(1rem, 2vw, 1.1rem)', 
-            color: '#666',
-            margin: 0
+          <h4 style={{ 
+            fontSize: '2rem', textAlign: 'center', color: '#1a1a2e', margin: 0
           }}>
             We'd love to hear from you
-          </p>
+          </h4>
         </div>
 
         {/* Contact Form */}
