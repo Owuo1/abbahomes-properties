@@ -102,7 +102,7 @@ const Properties = ({ properties = [] }) => {
                 }}
                 onClick={() => setFilterCategory('house')}
               >
-                🏠 Houses
+                Houses
               </button>
             </div>
           </div>
