@@ -5,7 +5,6 @@ const PropertyCard = ({ property }) => {
   // ✅ Debug log to see what's being rendered
   console.log('🃏 PropertyCard rendering:', property?.title)
 
-
   const getCategoryEmoji = (category) => {
     const emojis = {
       land: '🌍',
