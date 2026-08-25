@@ -32,50 +32,6 @@ const Properties = ({ properties = [] }) => {
             marginBottom: '40px', 
             flexWrap: 'wrap' 
           }}>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <button
-                style={{
-                  padding: '10px 25px',
-                  border: `2px solid ${filterType === 'all' ? '#e67e22' : '#e0e0e0'}`,
-                  borderRadius: '25px',
-                  background: filterType === 'all' ? '#e67e22' : 'transparent',
-                  color: filterType === 'all' ? 'white' : '#666',
-                  cursor: 'pointer',
-                  fontWeight: '500'
-                }}
-                onClick={() => setFilterType('all')}
-              >
-                All Types
-              </button>
-              <button
-                style={{
-                  padding: '10px 25px',
-                  border: `2px solid ${filterType === 'sale' ? '#e67e22' : '#e0e0e0'}`,
-                  borderRadius: '25px',
-                  background: filterType === 'sale' ? '#e67e22' : 'transparent',
-                  color: filterType === 'sale' ? 'white' : '#666',
-                  cursor: 'pointer',
-                  fontWeight: '500'
-                }}
-                onClick={() => setFilterType('sale')}
-              >
-                For Sale
-              </button>
-              <button
-                style={{
-                  padding: '10px 25px',
-                  border: `2px solid ${filterType === 'rent' ? '#e67e22' : '#e0e0e0'}`,
-                  borderRadius: '25px',
-                  background: filterType === 'rent' ? '#e67e22' : 'transparent',
-                  color: filterType === 'rent' ? 'white' : '#666',
-                  cursor: 'pointer',
-                  fontWeight: '500'
-                }}
-                onClick={() => setFilterType('rent')}
-              >
-                For Rent
-              </button>
-            </div>
             
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <button
@@ -104,7 +60,7 @@ const Properties = ({ properties = [] }) => {
                 }}
                 onClick={() => setFilterCategory('land')}
               >
-                🌍 Land
+                Land
               </button>
               <button
                 style={{
@@ -118,7 +74,21 @@ const Properties = ({ properties = [] }) => {
                 }}
                 onClick={() => setFilterCategory('apartment')}
               >
-                🏢 Apartments
+                Apartments
+              </button>
+              <button
+                style={{
+                  padding: '10px 25px',
+                  border: `2px solid ${filterCategory === 'apartment' ? '#e67e22' : '#e0e0e0'}`,
+                  borderRadius: '25px',
+                  background: filterCategory === 'apartment' ? '#e67e22' : 'transparent',
+                  color: filterCategory === 'apartment' ? 'white' : '#666',
+                  cursor: 'pointer',
+                  fontWeight: '500'
+                }}
+                onClick={() => setFilterCategory('commercial')}
+              >
+                Commercial
               </button>
               <button
                 style={{
