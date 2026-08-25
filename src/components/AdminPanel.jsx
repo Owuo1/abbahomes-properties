@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { FaTimes, FaLock, FaUpload } from 'react-icons/fa'
 import { uploadToR2 } from '../utils/r2Storage'
 
-const ADMIN_PIN = '1234' // Change this to your desired PIN
+const ADMIN_PIN = '9237' // Change this to your desired PIN
 
 const AdminPanel = ({ properties, onAddProperty, onDeleteProperty }) => {
   const [isOpen, setIsOpen] = useState(false)
