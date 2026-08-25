@@ -5,21 +5,14 @@ const PropertyCard = ({ property }) => {
   // ✅ Debug log to see what's being rendered
   console.log('🃏 PropertyCard rendering:', property?.title)
 
-  const getBadgeStyle = (type) => {
-    const styles = {
-      sale: { background: '#e67e22', color: 'white' },
-      rent: { background: '#2ecc71', color: 'white' },
-      commercial: { background: '#3498db', color: 'white' }
-    }
-    return styles[type] || styles.sale
-  }
 
   const getCategoryEmoji = (category) => {
     const emojis = {
       land: '🌍',
       apartment: '🏢',
       house: '🏠',
-      commercial: '🏢'
+      commercial: '🏢',
+      sale: { background: '#e67e22', color: 'white' },
     }
     return emojis[category] || '🏠'
   }
