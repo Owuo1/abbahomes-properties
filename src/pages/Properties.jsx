@@ -88,7 +88,7 @@ const Properties = ({ properties = [] }) => {
                 }}
                 onClick={() => setFilterCategory('commercial')}
               >
-                Commercial
+                Commercials
               </button>
               <button
                 style={{
