@@ -18,7 +18,7 @@ const r2Client = new S3Client({
   },
 })
 
-// ✅ Convert base64 to Uint8Array (browser-compatible)
+// ✅ Convert base64 to Uint8Array
 const base64ToUint8Array = (base64) => {
   const base64String = base64.split(',')[1] || base64
   const binaryString = atob(base64String)
@@ -71,7 +71,7 @@ export const deleteFromR2 = async (imageUrl) => {
 
 // ✅ ===== NEW: Store properties metadata in R2 =====
 
-// Save properties data to R2 as JSON
+// Save all properties data to R2 as JSON
 export const savePropertiesToR2 = async (properties) => {
   try {
     const metadata = JSON.stringify(properties)
@@ -84,7 +84,7 @@ export const savePropertiesToR2 = async (properties) => {
       Key: key,
       Body: data,
       ContentType: 'application/json',
-      CacheControl: 'public, max-age=3600', // Cache for 1 hour
+      CacheControl: 'public, max-age=3600',
     })
 
     await r2Client.send(command)
@@ -96,7 +96,7 @@ export const savePropertiesToR2 = async (properties) => {
   }
 }
 
-// Load properties data from R2
+// Load all properties data from R2
 export const loadPropertiesFromR2 = async () => {
   try {
     const key = 'properties-data.json'
