@@ -11,23 +11,8 @@ import {
   loadPropertiesFromR2 
 } from '../utils/r2Storage'
 
-// ✅ Default property for initial setup
-const DEFAULT_PROPERTIES = [
-  {
-    id: 'default-1',
-    title: 'Test Property - Delete Me',
-    price: 'KES 10,000',
-    location: 'Homa Bay Town, Homa Bay County',
-    bedrooms: 2,
-    bathrooms: 1,
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600',
-    description: 'This is a test property to verify the system is working.',
-    type: 'rent',
-    category: 'apartment',
-    status: 'available',
-    dateAdded: new Date().toISOString()
-  }
-]
+// ✅ Default properties for first-time setup
+const DEFAULT_PROPERTIES = []
 
 // Image compression utility
 const compressImage = (file, maxWidth = 800, maxHeight = 600, quality = 0.7) => {
@@ -70,69 +55,71 @@ export const useProperties = () => {
   const [storageInfo, setStorageInfo] = useState(null)
   const [isDBReady, setIsDBReady] = useState(false)
 
-  // ✅ Load properties from R2 (primary) with IndexedDB fallback
+  // ✅ Load properties: R2 → IndexedDB (cache)
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('🔍 Starting to load properties...')
+        console.log('🔍 Loading properties...')
         
-        // ✅ Step 1: Try loading from R2 (cloud)
+        // ✅ Step 1: Try loading from R2 (permanent storage)
         let data = await loadPropertiesFromR2()
-        console.log('🔍 Data loaded from R2:', data)
+        console.log('🔍 Data from R2:', data)
         
         // ✅ Step 2: If no data in R2, try IndexedDB
         if (!data || data.length === 0) {
           console.log('🔍 No data in R2, trying IndexedDB...')
           data = await loadProperties()
-          console.log('🔍 Data loaded from IndexedDB:', data)
+          console.log('🔍 Data from IndexedDB:', data)
         }
         
-        // ✅ Step 3: If still no data, use defaults and save to R2
+        // ✅ Step 3: If still no data, use defaults
         if (!data || data.length === 0) {
-          console.log('🔍 No data found anywhere, adding default test property...')
+          console.log('🔍 No data found, using defaults...')
           data = DEFAULT_PROPERTIES
-          await savePropertiesToR2(data)  // Save to R2
-          await saveProperties(data)      // Save to IndexedDB
-          console.log('🔍 Default property saved to R2 and IndexedDB!')
         }
         
-        // ✅ Set state with the data
-        setProperties(data)
-        console.log('🔍 Properties set in state:', data.length, 'properties')
+        // ✅ Step 4: Save to IndexedDB (for fast local access)
+        if (data && data.length > 0) {
+          await saveProperties(data)
+        }
         
-        // Get storage info
+        // ✅ Step 5: Set state
+        setProperties(data)
+        console.log('🔍 Properties loaded:', data.length)
+        
         const info = await getStorageInfo()
         setStorageInfo(info)
         
       } catch (error) {
         console.error('❌ Failed to load properties:', error)
-        // Fallback to defaults
-        setProperties(DEFAULT_PROPERTIES)
+        // Fallback to IndexedDB
+        try {
+          const fallback = await loadProperties()
+          setProperties(fallback || [])
+        } catch (e) {
+          setProperties([])
+        }
       }
       setIsLoading(false)
-      console.log('🔍 Loading complete')
     }
     
     loadData()
   }, [])
 
-  // ✅ Save properties to both IndexedDB and R2
+  // ✅ Save properties to both R2 and IndexedDB
   const savePropertiesToDB = async (newProperties) => {
     try {
-      console.log('💾 Saving properties to IndexedDB and R2:', newProperties.length, 'properties')
+      console.log('💾 Saving properties...')
       
-      // ✅ Save to IndexedDB (fast local access)
-      await saveProperties(newProperties)
-      
-      // ✅ Save to R2 (permanent cloud backup)
+      // ✅ Save to R2 (permanent cloud storage)
       await savePropertiesToR2(newProperties)
       
-      // ✅ Update state
+      // ✅ Save to IndexedDB (fast local cache)
+      await saveProperties(newProperties)
+      
       setProperties(newProperties)
+      console.log('💾 Properties saved successfully to R2 and IndexedDB!')
       
-      console.log('💾 Properties saved successfully to both IndexedDB and R2!')
-      
-      // Update storage info
       const info = await getStorageInfo()
       setStorageInfo(info)
       
@@ -150,9 +137,7 @@ export const useProperties = () => {
     
     if (imageFile) {
       try {
-        console.log('📸 Compressing image...')
         image = await compressImage(imageFile, 800, 600, 0.7)
-        console.log('📸 Image compressed successfully')
       } catch (error) {
         console.error('❌ Image compression failed:', error)
         image = propertyData.image || ''
@@ -167,11 +152,9 @@ export const useProperties = () => {
       status: 'available'
     }
     
-    console.log('➕ New property object:', newProperty)
-    
     const updated = [...properties, newProperty]
     await savePropertiesToDB(updated)
-    console.log('➕ Property added successfully! Total properties:', updated.length)
+    console.log('➕ Property added! Total:', updated.length)
     return newProperty
   }
 
@@ -180,19 +163,15 @@ export const useProperties = () => {
     try {
       console.log('🗑️ Deleting property:', id)
       
-      // Delete from IndexedDB
-      await deleteFromDB(id)
-      
-      // Update state
       const updated = properties.filter(p => p.id !== id)
       
-      // Save updated list to R2
+      // ✅ Save to R2 and IndexedDB
       await savePropertiesToR2(updated)
+      await deleteFromDB(id)
       
       setProperties(updated)
       console.log('🗑️ Property deleted. Remaining:', updated.length)
       
-      // Update storage info
       const info = await getStorageInfo()
       setStorageInfo(info)
     } catch (error) {
@@ -228,13 +207,28 @@ export const useProperties = () => {
 
   // Get featured properties (first 3 for homepage)
   const getFeatured = () => {
-    const featured = properties.slice(0, 3)
-    return featured
+    return properties.slice(0, 3)
   }
 
   // Get storage info
   const getStorageInfoData = () => {
     return storageInfo
+  }
+
+  // ✅ Force refresh from R2
+  const refreshFromR2 = async () => {
+    setIsLoading(true)
+    try {
+      const data = await loadPropertiesFromR2()
+      if (data && data.length > 0) {
+        setProperties(data)
+        await saveProperties(data)
+        console.log('✅ Refreshed from R2:', data.length)
+      }
+    } catch (error) {
+      console.error('❌ Refresh failed:', error)
+    }
+    setIsLoading(false)
   }
 
   return {
@@ -250,6 +244,7 @@ export const useProperties = () => {
     getByLocation,
     getFeatured,
     getStorageInfoData,
+    refreshFromR2,
     compressImage
   }
 }
