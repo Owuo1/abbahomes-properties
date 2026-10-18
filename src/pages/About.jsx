@@ -1,6 +1,6 @@
 import React from 'react'
 
-const About = () => {
+ About = () => {
   return (
     <section style={{ padding: '80px 20px', background: 'white' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
